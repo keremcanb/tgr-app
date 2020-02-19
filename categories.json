@@ -1,0 +1,98 @@
+[
+  {
+    "location": ["Phuket", "Pattaya"],
+    "status": false,
+    "_id": "5dfe327dacbfe32a48734623",
+    "title": "Plajlar",
+    "image": "http://www.taylandgezi.com/wp-content/uploads/app/tn/koh-phi-phi-leh.jpg",
+    "__v": 0
+  },
+  {
+    "location": ["Bangkok", "Phuket", "Pattaya", "Chiang Mai"],
+    "status": false,
+    "_id": "5dfe328aacbfe32a48734624",
+    "title": "Tapınaklar",
+    "image": "http://www.taylandgezi.com/wp-content/uploads/app/tn/wat-phra-kaew.jpg",
+    "__v": 0
+  },
+  {
+    "location": ["Bangkok", "Pattaya", "Chiang Mai"],
+    "status": false,
+    "_id": "5dfe3e984dbe371bfc0cb7b0",
+    "title": "Müzeler",
+    "image": "http://www.taylandgezi.com/wp-content/uploads/app/tn/bangkok-national-museum.jpg",
+    "__v": 0
+  },
+  {
+    "location": ["Bangkok", "Phuket", "Pattaya", "Chiang Mai"],
+    "status": false,
+    "_id": "5dfe3ef04dbe371bfc0cb7b1",
+    "title": "Tema Parkları",
+    "image": "http://www.taylandgezi.com/wp-content/uploads/app/tn/aquarium.jpg",
+    "__v": 0
+  },
+  {
+    "location": ["Bangkok", "Phuket", "Pattaya", "Chiang Mai"],
+    "status": false,
+    "_id": "5dfe3f754dbe371bfc0cb7b2",
+    "title": "Turlar",
+    "image": "http://www.taylandgezi.com/wp-content/uploads/app/tn/floating-market.jpg",
+    "__v": 0
+  },
+  {
+    "location": ["Bangkok", "Phuket", "Pattaya", "Chiang Mai"],
+    "status": false,
+    "_id": "5dfe42964dbe371bfc0cb7b3",
+    "title": "Aktiviteler",
+    "image": "http://www.taylandgezi.com/wp-content/uploads/app/tn/masaj.jpg",
+    "__v": 0
+  },
+  {
+    "location": ["Bangkok", "Phuket", "Pattaya", "Chiang Mai"],
+    "status": false,
+    "_id": "5dfe470de58e300440b65603",
+    "title": "Gece Hayatı",
+    "image": "http://www.taylandgezi.com/wp-content/uploads/app/tn/nightlife.jpg",
+    "__v": 0
+  },
+  {
+    "location": ["Bangkok", "Phuket", "Pattaya", "Chiang Mai"],
+    "status": false,
+    "_id": "5e016ef08f7104165c2fff22",
+    "title": "Alışveriş",
+    "image": "http://www.taylandgezi.com/wp-content/uploads/app/tn/siam-paragon.jpg",
+    "__v": 0
+  },
+  {
+    "location": ["Bangkok", "Phuket", "Pattaya", "Chiang Mai"],
+    "status": false,
+    "_id": "5e03658d43dc0f479cfbacc7",
+    "title": "Ulaşım",
+    "image": "http://www.taylandgezi.com/wp-content/uploads/app/tn/skytrain.jpg",
+    "__v": 0
+  },
+  {
+    "location": ["Bangkok", "Phuket", "Pattaya", "Chiang Mai"],
+    "status": false,
+    "_id": "5e03eb573089734de84bd426",
+    "title": "Oteller",
+    "image": "http://www.taylandgezi.com/wp-content/uploads/app/tn/otel.jpg",
+    "__v": 0
+  },
+  {
+    "location": ["Bangkok", "Phuket", "Pattaya", "Chiang Mai"],
+    "status": false,
+    "_id": "5dfe327dacbfe32a48734621",
+    "title": "Restoranlar",
+    "image": "http://www.taylandgezi.com/wp-content/uploads/app/tn/thai-food.jpg",
+    "__v": 0
+  },
+  {
+    "location": ["Phuket", "Pattaya"],
+    "status": false,
+    "_id": "5e0ca2cfa674e80004e3cdb6",
+    "title": "Manzara Noktaları",
+    "image": "http://www.taylandgezi.com/wp-content/uploads/app/tn/kata-viewpoint.jpg",
+    "__v": 0
+  }
+]
