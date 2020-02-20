@@ -1,9 +1,9 @@
 {
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 4656,
-  "expoServerNgrokUrl": "https://bu-9ee.gezginrocker.taylandgezirehberi.exp.direct",
-  "packagerNgrokUrl": "https://packager.bu-9ee.gezginrocker.taylandgezirehberi.exp.direct",
-  "ngrokPid": 6156,
+  "packagerPid": 7056,
+  "expoServerNgrokUrl": "https://de-m7i.gezginrocker.tgr-app.exp.direct",
+  "packagerNgrokUrl": "https://packager.de-m7i.gezginrocker.tgr-app.exp.direct",
+  "ngrokPid": 5332,
   "devToolsPort": 19002
 }

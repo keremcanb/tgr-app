@@ -6,7 +6,7 @@ import {
   ScrollView,
   Image,
   Linking,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native'
 
 const InfoScreen = props => {
@@ -14,30 +14,31 @@ const InfoScreen = props => {
     <ScrollView>
       <View>
         <Text style={styles.container}>
-          Bu aplikasyon, 2010 yılından beri faaliyette olan ve Tayland
-          hakkındaki en ayrıntılı Türkçe kaynak olan taylandgezi.com sitesindeki
+          Bu aplikasyon, 2010 yılından beri Tayland hakkındaki en ayrıntılı
+          Türkçe kaynak olma özelliğini koruyan taylandgezi.com sitesindeki
           bilgilerden derlenmiştir.
         </Text>
-        <TouchableHighlight
+        <TouchableOpacity
           onPress={() => Linking.openURL('http://www.taylandgezi.com')}
         >
           <Image
             style={styles.logo}
             source={{
               uri:
-                'http://www.taylandgezi.com/wp-content/uploads/2020/02/tgr-logo-full.png'
+                'http://www.taylandgezi.com/wp-content/uploads/2016/01/tayland-gezi-rehberi-l.gif'
             }}
           />
-        </TouchableHighlight>
+        </TouchableOpacity>
         <Text style={styles.container}>
-          Daha da fazla ve ayrıntılı bilgi için Google Play Books'ta bulunan
-          Tayland Gezi Rehberi e-kitabını indirebilirsiniz.
+          Daha fazla ve ayrıntılı bilgiler için Google Play Books'tan Tayland
+          Gezi Rehberi e-kitabını indirebilirsiniz.
         </Text>
-        <TouchableHighlight
+        <TouchableOpacity
           onPress={() =>
             Linking.openURL(
               'https://play.google.com/store/books/details/Keremcan_B%C3%BCy%C3%BCkta%C5%9Fk%C4%B1n_Tayland_Gezi_Rehberi?id=eK10BgAAQBAJ'
-          )}
+            )
+          }
         >
           <Image
             style={styles.image}
@@ -46,7 +47,7 @@ const InfoScreen = props => {
                 'https://books.google.com/books/content/images/frontcover/eK10BgAAQBAJ?fife=w200-h300'
             }}
           />
-        </TouchableHighlight>
+        </TouchableOpacity>
         <Text style={styles.container}>© 2020 Keremcan Büyüktaşkın</Text>
         <Text style={styles.container}>
           Yazar, bilgilerin güncelliği, doğrululuğu & eksiksizliği hakkında
@@ -81,20 +82,21 @@ const styles = StyleSheet.create({
     fontSize: 19,
     lineHeight: 25,
     fontFamily: 'nunito-light',
-    marginBottom: 5
+    marginBottom: 5,
+    textAlign: 'center'
   },
   image: {
     marginLeft: 100,
     marginRight: 100,
     width: 150,
     height: 200,
-    marginBottom: 5
+    marginBottom: 20
   },
   logo: {
-    marginLeft: 50,
-    marginRight: 50,
-    width: 250,
-    height: 50,
+    marginLeft: 100,
+    marginRight: 100,
+    width: 170,
+    height: 80,
     marginBottom: 5
   }
 })
