@@ -14,9 +14,9 @@ const InfoScreen = props => {
     <ScrollView>
       <View>
         <Text style={styles.container}>
-          Bu aplikasyon, 2010 yılından beri Tayland hakkındaki en ayrıntılı
-          Türkçe kaynak olma özelliğini koruyan taylandgezi.com sitesindeki
-          bilgilerden derlenmiştir.
+          Bu uygulama, 2010 yılından beri Tayland hakkındaki en ayrıntılı Türkçe
+          kaynak olma özelliğini koruyan taylandgezi.com sitesindeki bilgilerden
+          derlenmiştir.
         </Text>
         <TouchableOpacity
           onPress={() => Linking.openURL('http://www.taylandgezi.com')}

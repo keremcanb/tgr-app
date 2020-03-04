@@ -9,7 +9,7 @@ const HomeScreen = props => {
   useEffect(() => {
     const getLocations = async () => {
       const result = await axios.get(
-        'https://tgr-admin.azurewebsites.net/api/locations'
+        'https://tgr-admin.appspot.com/api/locations'
       )
 
       setLocations(result.data)

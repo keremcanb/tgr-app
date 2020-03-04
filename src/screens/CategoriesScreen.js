@@ -9,7 +9,7 @@ const CategoriesScreen = props => {
   useEffect(() => {
     const getCategories = async () => {
       const result = await axios.get(
-        'https://tgr-admin.azurewebsites.net/api/categories'
+        'https://tgr-admin.appspot.com/api/categories'
       )
 
       setCategories(result.data)

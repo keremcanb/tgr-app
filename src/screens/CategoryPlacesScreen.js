@@ -8,9 +8,7 @@ const PlacesScreen = props => {
 
   useEffect(() => {
     const getPlaces = async () => {
-      const result = await axios.get(
-        'https://tgr-admin.azurewebsites.net/api/places'
-      )
+      const result = await axios.get('https://tgr-admin.appspot.com/api/places')
 
       setPlaces(result.data)
     }

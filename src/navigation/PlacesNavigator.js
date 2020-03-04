@@ -19,8 +19,10 @@ import InfoScreen from '../screens/InfoScreen'
 // Default stack options
 const defaultStackNavOptions = {
   headerStyle: {
-    backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
+    backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : '',
+    height: 50
   },
+  headerForceInset: { top: 'never', bottom: 'never' },
   headerTitleStyle: {
     fontFamily: 'nunito-bold'
   },
@@ -145,17 +147,17 @@ const tabScreenConfig = {
 const PlacesFavTabNavigator =
   Platform.OS === 'android'
     ? createMaterialBottomTabNavigator(tabScreenConfig, {
-        activeTintColor: 'white',
-        shifting: true,
-        labeled: false,
-        barStyle: {
-          backgroundColor: Colors.primaryColor
-        }
-      })
+      activeTintColor: 'white',
+      shifting: true,
+      labeled: false,
+      barStyle: {
+        backgroundColor: Colors.primaryColor
+      }
+    })
     : createBottomTabNavigator(tabScreenConfig, {
-        tabBarOptions: {
-          activeTintColor: Colors.accentColor
-        }
-      })
+      tabBarOptions: {
+        activeTintColor: Colors.accentColor
+      }
+    })
 
 export default createAppContainer(PlacesFavTabNavigator)
