@@ -32,14 +32,7 @@ const PlacesScreen = props => {
           props.navigation.navigate({
             routeName: 'PlaceDetail',
             params: {
-              placeId: itemData.item._id,
-              placeTitle: itemData.item.title,
-              placeImage: itemData.item.image,
-              placeContent: itemData.item.content,
-              placeInfo: itemData.item.info,
-              placeLink: itemData.item.link,
-              placeLat: itemData.item.lat,
-              placeLng: itemData.item.lng
+              placeId: itemData.item._id
             }
           })
         }}
