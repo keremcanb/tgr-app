@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   ScrollView,
   Image,
@@ -6,69 +6,116 @@ import {
   StyleSheet,
   View,
   Platform,
-  Linking
+  Linking,
+  Button
 } from 'react-native'
 import MapView from 'react-native-maps'
 import { MarkdownView } from 'react-native-markdown-view'
+import axios from 'axios'
 
 const PlaceDetailScreen = props => {
-  const placesTitle = props.navigation.getParam('placeTitle')
-  const placesImage = props.navigation.getParam('placeImage')
-  const placesContent = props.navigation.getParam('placeContent')
-  const placesInfo = props.navigation.getParam('placeInfo')
-  const placesLat = props.navigation.getParam('placeLat')
-  const placesLng = props.navigation.getParam('placeLng')
+  const [places, setPlaces] = useState([])
+
+  useEffect(() => {
+    const getPlaces = async () => {
+      const result = await axios.get('https://tgr-admin.appspot.com/api/places')
+
+      setPlaces(result.data)
+    }
+
+    getPlaces()
+  }, [])
+
+  const placeID = props.navigation.getParam('placeId')
+
+  const selectedPlace = places.find(place => place._id === placeID)
 
   const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' })
-  const latLng = `${placesLat},${placesLng}`
+  const latLng = `${selectedPlace && selectedPlace.lat},${selectedPlace &&
+    selectedPlace.lng}`
   const label = 'Custom Label'
   const url = Platform.select({
     ios: `${scheme}${label}@${latLng}`,
     android: `${scheme}${latLng}(${label})`
   })
 
+  const bookingUrl = `${selectedPlace && selectedPlace.link}`
+
   return (
     <ScrollView>
-      <Image source={{ uri: placesImage }} style={styles.image} />
+      {selectedPlace && (
+        <>
+          <Image source={{ uri: selectedPlace.image }} style={styles.image} />
 
-      <View style={styles.container}>
-        <MarkdownView styles={markdownStyles}>{placesContent}</MarkdownView>
-      </View>
+          <View>
+            {selectedPlace.link !== '' && (
+              <View style={styles.buttonTop}>
+                <Button
+                  title='REZERVASYON'
+                  color='#2a1a73'
+                  onPress={() => Linking.openURL(bookingUrl)}
+                />
+              </View>
+            )}
+          </View>
 
-      <View>
-        {placesInfo !== '' && (
-          <>
-            <Text style={styles.heading3}>Bilgiler</Text>
-            <View style={styles.line} />
-            <Text style={styles.container}>{placesInfo}</Text>
-          </>
-        )}
-      </View>
+          <View style={styles.container}>
+            <MarkdownView styles={markdownStyles}>
+              {selectedPlace.content}
+            </MarkdownView>
+          </View>
 
-      <View>
-        {placesLat && placesLat !== '' && (
-          <>
-            <Text style={styles.heading3}>Harita</Text>
-            <View style={styles.line} />
-            <MapView
-              showsUserLocation
-              style={styles.map}
-              initialRegion={{
-                latitude: placesLat,
-                longitude: placesLng,
-                latitudeDelta: 0.0022,
-                longitudeDelta: 0.0121
-              }}
-            >
-              <MapView.Marker
-                coordinate={{ latitude: placesLat, longitude: placesLng }}
-                title={placesTitle}
-                onPress={() => Linking.openURL(url)}
-              />
-            </MapView>
-          </>
-        )}
-      </View>
+          <View>
+            {selectedPlace.info !== '' && (
+              <>
+                <Text style={styles.heading3}>Bilgiler</Text>
+                <View style={styles.line} />
+                <Text style={styles.container}>{selectedPlace.info}</Text>
+              </>
+            )}
+          </View>
+
+          <View>
+            {selectedPlace.link !== '' && (
+              <View style={styles.buttonBottom}>
+                <Button
+                  title='REZERVASYON'
+                  color='#2a1a73'
+                  onPress={() => Linking.openURL(bookingUrl)}
+                />
+              </View>
+            )}
+          </View>
+
+          <View>
+            {selectedPlace.lat && selectedPlace.lng !== '' && (
+              <>
+                <Text style={styles.heading3}>Harita</Text>
+                <View style={styles.line} />
+                <MapView
+                  showsUserLocation
+                  style={styles.map}
+                  initialRegion={{
+                    latitude: selectedPlace.lat,
+                    longitude: selectedPlace.lng,
+                    latitudeDelta: 0.0022,
+                    longitudeDelta: 0.0121
+                  }}
+                >
+                  <MapView.Marker
+                    coordinate={{
+                      latitude: selectedPlace.lat,
+                      longitude: selectedPlace.lng
+                    }}
+                    title={selectedPlace.title}
+                    onPress={() => Linking.openURL(url)}
+                  />
+                </MapView>
+              </>
+            )}
+          </View>
+        </>
+      )}
     </ScrollView>
   )
 }
@@ -105,6 +152,16 @@ const styles = StyleSheet.create({
     marginLeft: '4%',
     marginRight: '4%',
     marginBottom: 10
+  },
+  buttonTop: {
+    marginLeft: '30%',
+    marginRight: '30%',
+    marginTop: 20
+  },
+  buttonBottom: {
+    marginLeft: '30%',
+    marginRight: '30%',
+    marginBottom: 20
   },
   map: {
     height: 300,

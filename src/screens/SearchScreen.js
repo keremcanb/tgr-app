@@ -27,7 +27,7 @@ class SearchScreen extends Component {
 
   // Fetch API
   makeRemoteRequest = () => {
-    const url = `https://tgr-admin.azurewebsites.net/api/places`
+    const url = `https://tgr-admin.appspot.com/api/places`
     this.setState({ loading: true })
     fetch(url)
       .then(res => res.json())
@@ -101,13 +101,7 @@ class SearchScreen extends Component {
                 navigate({
                   routeName: 'SearchResult',
                   params: {
-                    placeId: item._id,
-                    placeTitle: item.title,
-                    placeImage: item.image,
-                    placeContent: item.content,
-                    placeInfo: item.info,
-                    placeLat: item.lat,
-                    placeLng: item.lng
+                    placeId: item._id
                   }
                 })
               }}
