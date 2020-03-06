@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import {
   ScrollView,
   Image,
@@ -11,111 +11,92 @@ import {
 } from 'react-native'
 import MapView from 'react-native-maps'
 import { MarkdownView } from 'react-native-markdown-view'
-import axios from 'axios'
 
 const PlaceDetailScreen = props => {
-  const [places, setPlaces] = useState([])
-
-  useEffect(() => {
-    const getPlaces = async () => {
-      const result = await axios.get('https://tgr-admin.appspot.com/api/places')
-
-      setPlaces(result.data)
-    }
-
-    getPlaces()
-  }, [])
-
-  const placeID = props.navigation.getParam('placeId')
-
-  const selectedPlace = places.find(place => place._id === placeID)
+  const placesTitle = props.navigation.getParam('placeTitle')
+  const placesImage = props.navigation.getParam('placeImage')
+  const placesContent = props.navigation.getParam('placeContent')
+  const placesInfo = props.navigation.getParam('placeInfo')
+  const placesLink = props.navigation.getParam('placeLink')
+  const placesLat = props.navigation.getParam('placeLat')
+  const placesLng = props.navigation.getParam('placeLng')
 
   const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' })
-  const latLng = `${selectedPlace && selectedPlace.lat},${selectedPlace &&
-    selectedPlace.lng}`
+  const latLng = `${placesLat},${placesLng}`
   const label = 'Custom Label'
   const url = Platform.select({
     ios: `${scheme}${label}@${latLng}`,
     android: `${scheme}${latLng}(${label})`
   })
 
-  const bookingUrl = `${selectedPlace && selectedPlace.link}`
+  const bookingUrl = `${placesLink}`
 
   return (
     <ScrollView>
-      {selectedPlace && (
-        <>
-          <Image source={{ uri: selectedPlace.image }} style={styles.image} />
+      <Image source={{ uri: placesImage }} style={styles.image} />
 
-          <View>
-            {selectedPlace.link !== '' && (
-              <View style={styles.buttonTop}>
-                <Button
-                  title='REZERVASYON'
-                  color='#2a1a73'
-                  onPress={() => Linking.openURL(bookingUrl)}
-                />
-              </View>
-            )}
+      <View>
+        {placesLink !== '' && (
+          <View style={styles.buttonTop}>
+            <Button
+              title='REZERVASYON'
+              color='#2a1a73'
+              onPress={() => Linking.openURL(bookingUrl)}
+            />
           </View>
+        )}
+      </View>
 
-          <View style={styles.container}>
-            <MarkdownView styles={markdownStyles}>
-              {selectedPlace.content}
-            </MarkdownView>
-          </View>
+      <View style={styles.container}>
+        <MarkdownView styles={markdownStyles}>{placesContent}</MarkdownView>
+      </View>
 
-          <View>
-            {selectedPlace.info !== '' && (
-              <>
-                <Text style={styles.heading3}>Bilgiler</Text>
-                <View style={styles.line} />
-                <Text style={styles.container}>{selectedPlace.info}</Text>
-              </>
-            )}
-          </View>
+      <View>
+        {placesInfo !== '' && (
+          <>
+            <Text style={styles.heading3}>Bilgiler</Text>
+            <View style={styles.line} />
+            <Text style={styles.container}>{placesInfo}</Text>
+          </>
+        )}
+      </View>
 
-          <View>
-            {selectedPlace.link !== '' && (
-              <View style={styles.buttonBottom}>
-                <Button
-                  title='REZERVASYON'
-                  color='#2a1a73'
-                  onPress={() => Linking.openURL(bookingUrl)}
-                />
-              </View>
-            )}
+      <View>
+        {placesLink !== '' && (
+          <View style={styles.buttonBottom}>
+            <Button
+              title='REZERVASYON'
+              color='#2a1a73'
+              onPress={() => Linking.openURL(bookingUrl)}
+            />
           </View>
+        )}
+      </View>
 
-          <View>
-            {selectedPlace.lat && selectedPlace.lng !== '' && (
-              <>
-                <Text style={styles.heading3}>Harita</Text>
-                <View style={styles.line} />
-                <MapView
-                  showsUserLocation
-                  style={styles.map}
-                  initialRegion={{
-                    latitude: selectedPlace.lat,
-                    longitude: selectedPlace.lng,
-                    latitudeDelta: 0.0022,
-                    longitudeDelta: 0.0121
-                  }}
-                >
-                  <MapView.Marker
-                    coordinate={{
-                      latitude: selectedPlace.lat,
-                      longitude: selectedPlace.lng
-                    }}
-                    title={selectedPlace.title}
-                    onPress={() => Linking.openURL(url)}
-                  />
-                </MapView>
-              </>
-            )}
-          </View>
-        </>
-      )}
+      <View>
+        {placesLat && placesLat !== '' && (
+          <>
+            <Text style={styles.heading3}>Harita</Text>
+            <View style={styles.line} />
+            <MapView
+              showsUserLocation
+              style={styles.map}
+              initialRegion={{
+                latitude: placesLat,
+                longitude: placesLng,
+                latitudeDelta: 0.0022,
+                longitudeDelta: 0.0121
+              }}
+            >
+              <MapView.Marker
+                coordinate={{ latitude: placesLat, longitude: placesLng }}
+                title={placesTitle}
+                onPress={() => Linking.openURL(url)}
+              />
+            </MapView>
+          </>
+        )}
+      </View>
     </ScrollView>
   )
 }

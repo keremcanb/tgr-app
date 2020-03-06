@@ -101,13 +101,7 @@ class SearchScreen extends Component {
                 navigate({
                   routeName: 'SearchResult',
                   params: {
-                    placeId: item._id,
-                    placeTitle: item.title,
-                    placeImage: item.image,
-                    placeContent: item.content,
-                    placeInfo: item.info,
-                    placeLat: item.lat,
-                    placeLng: item.lng
+                    placeId: item._id
                   }
                 })
               }}
