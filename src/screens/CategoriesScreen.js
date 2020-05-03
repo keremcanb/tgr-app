@@ -8,7 +8,7 @@ const CategoriesScreen = ({ navigation }) => {
   const categories = useResources("categories");
   const locations = navigation.getParam("locationId");
   const displayedCategories = categories.filter(
-    (arr) => arr.location.indexOf(locations) >= 0
+    (item) => item.location.indexOf(locations) >= 0
   );
 
   const renderGridItem = (itemData) => {

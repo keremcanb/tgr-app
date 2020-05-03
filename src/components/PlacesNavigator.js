@@ -5,7 +5,6 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import Colors from "../constants/Colors";
 
 import HomeScreen from "../screens/HomeScreen";
 import CategoriesScreen from "../screens/CategoriesScreen";
@@ -19,7 +18,7 @@ import InfoScreen from "../screens/InfoScreen";
 // Default stack options
 const defaultStackNavOptions = {
   headerStyle: {
-    backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "",
+    backgroundColor: Platform.OS === "android" ? "#2a1a73" : "",
     height: 50,
   },
   headerTitleStyle: {
@@ -28,7 +27,7 @@ const defaultStackNavOptions = {
   headerBackTitleStyle: {
     fontFamily: "nunito-light",
   },
-  headerTintColor: Platform.OS === "android" ? "white" : Colors.primaryColor,
+  headerTintColor: Platform.OS === "android" ? "white" : "#2a1a73",
 };
 
 // Main navigator
@@ -99,7 +98,7 @@ const tabScreenConfig = {
       tabBarIcon: (tabInfo) => {
         return <Ionicons name="ios-home" size={25} color={tabInfo.tintColor} />;
       },
-      tabBarColor: Colors.primaryColor,
+      tabBarColor: "#2a1a73",
     },
   },
   Search: {
@@ -110,7 +109,7 @@ const tabScreenConfig = {
           <Ionicons name="ios-search" size={25} color={tabInfo.tintColor} />
         );
       },
-      tabBarColor: Colors.primaryColor,
+      tabBarColor: "#2a1a73",
     },
   },
   Info: {
@@ -125,7 +124,7 @@ const tabScreenConfig = {
           />
         );
       },
-      tabBarColor: Colors.primaryColor,
+      tabBarColor: "#2a1a73",
     },
   },
   // Favorites: {
@@ -136,7 +135,7 @@ const tabScreenConfig = {
   //         <Ionicons name='ios-bookmark' size={25} color={tabInfo.tintColor} />
   //       )
   //     },
-  //     tabBarColor: Colors.primaryColor
+  //     tabBarColor: '#2a1a73'
   //   }
   // }
 };
@@ -149,12 +148,12 @@ const PlacesFavTabNavigator =
         shifting: true,
         labeled: false,
         barStyle: {
-          backgroundColor: Colors.primaryColor,
+          backgroundColor: "#2a1a73",
         },
       })
     : createBottomTabNavigator(tabScreenConfig, {
         tabBarOptions: {
-          activeTintColor: Colors.accentColor,
+          activeTintColor: "#ff6f00",
         },
       });
 

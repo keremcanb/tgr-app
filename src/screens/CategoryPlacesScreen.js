@@ -9,7 +9,7 @@ const PlacesScreen = ({ navigation }) => {
   const categories = navigation.getParam("categoryId");
   const locations = navigation.getParam("locationId");
   const displayedPlaces = places.filter(
-    (arr) => arr.category === categories && arr.location === locations
+    (item) => item.category === categories && item.location === locations
   );
 
   const renderGridItem = (itemData) => {
@@ -22,13 +22,6 @@ const PlacesScreen = ({ navigation }) => {
             routeName: "PlaceDetail",
             params: {
               placeId: itemData.item._id,
-              placeTitle: itemData.item.title,
-              placeImage: itemData.item.image,
-              placeContent: itemData.item.content,
-              placeInfo: itemData.item.info,
-              placeLink: itemData.item.link,
-              placeLat: itemData.item.lat,
-              placeLng: itemData.item.lng,
             },
           });
         }}

@@ -1,20 +1,20 @@
-import React, { useState } from 'react'
-import * as Font from 'expo-font'
-import { AppLoading } from 'expo'
-import { enableScreens } from 'react-native-screens'
-import PlacesNavigator from './src/navigation/PlacesNavigator'
+import React, { useState } from "react";
+import * as Font from "expo-font";
+import { AppLoading } from "expo";
+import { enableScreens } from "react-native-screens";
+import PlacesNavigator from "./src/components/PlacesNavigator";
 
-enableScreens()
+enableScreens();
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    'nunito-bold': require('./src/assets/fonts/Nunito-Bold.ttf'),
-    'nunito-light': require('./src/assets/fonts/Nunito-Light.ttf')
-  })
-}
+    "nunito-bold": require("./src/assets/fonts/Nunito-Bold.ttf"),
+    "nunito-light": require("./src/assets/fonts/Nunito-Light.ttf"),
+  });
+};
 
-export default function App () {
-  const [fontLoaded, setFontLoaded] = useState(false)
+export default function App() {
+  const [fontLoaded, setFontLoaded] = useState(false);
 
   if (!fontLoaded) {
     return (
@@ -22,8 +22,8 @@ export default function App () {
         startAsync={fetchFonts}
         onFinish={() => setFontLoaded(true)}
       />
-    )
+    );
   }
 
-  return <PlacesNavigator />
+  return <PlacesNavigator />;
 }
