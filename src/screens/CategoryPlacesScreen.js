@@ -22,6 +22,7 @@ const PlacesScreen = ({ navigation }) => {
             routeName: "PlaceDetail",
             params: {
               placeId: itemData.item._id,
+              placeTitle: itemData.item.title,
             },
           });
         }}

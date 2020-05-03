@@ -14,18 +14,10 @@ import MapView from "react-native-maps";
 import { MarkdownView } from "react-native-markdown-view";
 import useResources from "../components/useResources";
 
-// Before your getPlaces effect resolves, places will be an empty array, so selectedPlace = places.find(...) will return undefined.
-
-// The issue is with the selectedPlace, before getPlaces complete, the places is an empty array and .find method returns undefined. Accessing an image prop on selectedPlace undefined throws an error. Perform null check before accessing the image prop on selectedPlace.
-
 const PlaceDetailScreen = (props) => {
   const places = useResources("places");
   const placeID = props.navigation.getParam("placeId");
-
-  // selectedPlace is undefined and places equals []
-  // perform null check before accessing image prop
   const selectedPlace = places.find((place) => place._id === placeID);
-
   const scheme = Platform.select({ ios: "maps:0,0?q=", android: "geo:0,0?q=" });
   const latLng = `${selectedPlace && selectedPlace.lat},${
     selectedPlace && selectedPlace.lng
@@ -35,7 +27,6 @@ const PlaceDetailScreen = (props) => {
     ios: `${scheme}${label}@${latLng}`,
     android: `${scheme}${latLng}(${label})`,
   });
-
   const bookingUrl = `${selectedPlace && selectedPlace.link}`;
 
   return (
