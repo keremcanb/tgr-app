@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
+import React from "react";
 import { FlatList, View, Image, StyleSheet } from "react-native";
-import axios from "axios";
 import CategoryGridTile from "../components/CategoryGridTile";
 import useResources from "../components/useResources";
 
@@ -29,13 +29,13 @@ const HomeScreen = ({ navigation }) => {
       data={locations}
       renderItem={renderGridItem}
       numColumns={2}
-      keyExtractor={(item, index) => item._id}
+      keyExtractor={(item) => item._id}
       style={styles.grid}
     />
   );
 };
 
-HomeScreen.navigationOptions = (navData) => {
+HomeScreen.navigationOptions = () => {
   return {
     headerTitle: "Tayland Gezi Rehberi",
     headerLeft: (

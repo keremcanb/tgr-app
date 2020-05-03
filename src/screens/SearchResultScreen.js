@@ -127,14 +127,14 @@ const markdownStyles = {
     fontSize: 20,
     fontFamily: "nunito-bold",
     textTransform: "lowercase",
-    textTransform: "capitalize",
+    // textTransform: "capitalize",
     marginBottom: 10,
   },
   heading4: {
     fontSize: 18,
     fontFamily: "nunito-bold",
     textTransform: "lowercase",
-    textTransform: "capitalize",
+    // textTransform: "capitalize",
     marginBottom: 10,
   },
   imageWrapper: {

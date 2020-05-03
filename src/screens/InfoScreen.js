@@ -30,8 +30,8 @@ const InfoScreen = () => {
           />
         </TouchableOpacity>
         <Text style={styles.container}>
-          Daha fazla ve ayrıntılı bilgiler için Google Play Books'tan Tayland
-          Gezi Rehberi e-kitabını indirebilirsiniz.
+          Daha fazla ve ayrıntılı bilgiler için Google Play Books&apos;tan
+          Tayland Gezi Rehberi e-kitabını indirebilirsiniz.
         </Text>
         <TouchableOpacity
           onPress={() =>
@@ -70,7 +70,7 @@ const InfoScreen = () => {
   );
 };
 
-InfoScreen.navigationOptions = (navData) => {
+InfoScreen.navigationOptions = () => {
   return {
     headerTitle: "Hakkında",
   };

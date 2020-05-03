@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   ScrollView,
   Image,
@@ -191,15 +191,11 @@ const markdownStyles = {
   heading3: {
     fontSize: 20,
     fontFamily: "nunito-bold",
-    textTransform: "lowercase",
-    textTransform: "capitalize",
     marginBottom: 10,
   },
   heading4: {
     fontSize: 18,
     fontFamily: "nunito-bold",
-    textTransform: "lowercase",
-    textTransform: "capitalize",
     marginBottom: 10,
   },
   imageWrapper: {

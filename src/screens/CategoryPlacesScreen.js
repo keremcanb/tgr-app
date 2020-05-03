@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FlatList } from "react-native";
-import axios from "axios";
 import CategoryGridTile from "../components/CategoryGridTile";
 import useResources from "../components/useResources";
 
@@ -35,7 +34,7 @@ const PlacesScreen = ({ navigation }) => {
       data={displayedPlaces}
       renderItem={renderGridItem}
       numColumns={2}
-      keyExtractor={(item, index) => item._id}
+      keyExtractor={(item) => item._id}
     />
   );
 };
