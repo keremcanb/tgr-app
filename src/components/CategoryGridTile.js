@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   TouchableOpacity,
   View,
@@ -7,12 +7,12 @@ import {
   Platform,
   TouchableNativeFeedback,
   ImageBackground,
-} from "react-native";
+} from 'react-native';
 
 const CategoryGridTile = ({ onSelect, image, title }) => {
   let TouchableCmp = TouchableOpacity;
 
-  if (Platform.OS === "android" && Platform.Version >= 21) {
+  if (Platform.OS === 'android' && Platform.Version >= 21) {
     TouchableCmp = TouchableNativeFeedback;
   }
 
@@ -37,24 +37,24 @@ const styles = StyleSheet.create({
   PlaceItem: {
     flex: 1 / 2,
     height: 150,
-    width: "100%",
+    width: '100%',
     margin: 1,
   },
   bgImage: {
-    width: "100%",
-    height: "100%",
-    justifyContent: "flex-end",
+    width: '100%',
+    height: '100%',
+    justifyContent: 'flex-end',
   },
   titleContainer: {
-    backgroundColor: "rgba(0,0,0,0.5)",
+    backgroundColor: 'rgba(0,0,0,0.5)',
     paddingVertical: 3,
     paddingHorizontal: 12,
   },
   title: {
-    fontFamily: "nunito-light",
+    fontFamily: 'nunito-light',
     fontSize: 21,
-    color: "#fff",
-    textAlign: "center",
+    color: '#fff',
+    textAlign: 'center',
   },
 });
 

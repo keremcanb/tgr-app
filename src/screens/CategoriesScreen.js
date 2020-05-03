@@ -1,33 +1,31 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import { FlatList } from "react-native";
-import CategoryGridTile from "../components/CategoryGridTile";
-import useResources from "../components/useResources";
+import React from 'react';
+import { FlatList } from 'react-native';
+import CategoryGridTile from '../components/CategoryGridTile';
+import useResources from '../components/useResources';
 
 const CategoriesScreen = ({ navigation }) => {
-  const categories = useResources("categories");
-  const locations = navigation.getParam("locationId");
+  const categories = useResources('categories');
+  const locations = navigation.getParam('locationId');
   const displayedCategories = categories.filter(
     (item) => item.location.indexOf(locations) >= 0
   );
 
-  const renderGridItem = (itemData) => {
-    return (
-      <CategoryGridTile
-        image={itemData.item.image}
-        title={itemData.item.title}
-        onSelect={() => {
-          navigation.navigate({
-            routeName: "CategoryPlaces",
-            params: {
-              categoryId: itemData.item.title,
-              locationId: locations,
-            },
-          });
-        }}
-      />
-    );
-  };
+  const renderGridItem = (itemData) => (
+    <CategoryGridTile
+      image={itemData.item.image}
+      title={itemData.item.title}
+      onSelect={() => {
+        navigation.navigate({
+          routeName: 'CategoryPlaces',
+          params: {
+            categoryId: itemData.item.title,
+            locationId: locations,
+          },
+        });
+      }}
+    />
+  );
 
   return (
     <FlatList
@@ -40,7 +38,7 @@ const CategoriesScreen = ({ navigation }) => {
 };
 
 CategoriesScreen.navigationOptions = (navData) => {
-  const locId = navData.navigation.getParam("locationId");
+  const locId = navData.navigation.getParam('locationId');
 
   return {
     headerTitle: locId,

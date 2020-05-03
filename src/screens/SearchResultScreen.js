@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   ScrollView,
   Image,
@@ -7,21 +7,21 @@ import {
   View,
   Platform,
   Linking,
-} from "react-native";
-import MapView from "react-native-maps";
-import { MarkdownView } from "react-native-markdown-view";
+} from 'react-native';
+import MapView from 'react-native-maps';
+import { MarkdownView } from 'react-native-markdown-view';
 
 const PlaceDetailScreen = ({ navigation }) => {
-  const placesTitle = navigation.getParam("placeTitle");
-  const placesImage = navigation.getParam("placeImage");
-  const placesContent = navigation.getParam("placeContent");
-  const placesInfo = navigation.getParam("placeInfo");
-  const placesLat = navigation.getParam("placeLat");
-  const placesLng = navigation.getParam("placeLng");
+  const placesTitle = navigation.getParam('placeTitle');
+  const placesImage = navigation.getParam('placeImage');
+  const placesContent = navigation.getParam('placeContent');
+  const placesInfo = navigation.getParam('placeInfo');
+  const placesLat = navigation.getParam('placeLat');
+  const placesLng = navigation.getParam('placeLng');
 
-  const scheme = Platform.select({ ios: "maps:0,0?q=", android: "geo:0,0?q=" });
+  const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
   const latLng = `${placesLat},${placesLng}`;
-  const label = "Custom Label";
+  const label = 'Custom Label';
   const url = Platform.select({
     ios: `${scheme}${label}@${latLng}`,
     android: `${scheme}${latLng}(${label})`,
@@ -36,7 +36,7 @@ const PlaceDetailScreen = ({ navigation }) => {
       </View>
 
       <View>
-        {placesInfo !== "" && (
+        {placesInfo !== '' && (
           <>
             <Text style={styles.heading3}>Bilgiler</Text>
             <View style={styles.line} />
@@ -46,7 +46,7 @@ const PlaceDetailScreen = ({ navigation }) => {
       </View>
 
       <View>
-        {placesLat && placesLat !== "" && (
+        {placesLat && placesLat !== '' && (
           <>
             <Text style={styles.heading3}>Harita</Text>
             <View style={styles.line} />
@@ -74,7 +74,7 @@ const PlaceDetailScreen = ({ navigation }) => {
 };
 
 PlaceDetailScreen.navigationOptions = (navData) => {
-  const place = navData.navigation.getParam("placeTitle");
+  const place = navData.navigation.getParam('placeTitle');
 
   return {
     headerTitle: place,
@@ -83,27 +83,27 @@ PlaceDetailScreen.navigationOptions = (navData) => {
 
 const styles = StyleSheet.create({
   image: {
-    width: "100%",
+    width: '100%',
     height: 200,
   },
   container: {
     padding: 15,
     fontSize: 19,
     lineHeight: 25,
-    fontFamily: "nunito-light",
+    fontFamily: 'nunito-light',
   },
   heading3: {
     fontSize: 20,
-    fontFamily: "nunito-bold",
-    fontWeight: "700",
+    fontFamily: 'nunito-bold',
+    fontWeight: '700',
     paddingLeft: 15,
     marginBottom: 10,
   },
   line: {
-    backgroundColor: "#ccc",
+    backgroundColor: '#ccc',
     height: 1,
-    marginLeft: "4%",
-    marginRight: "4%",
+    marginLeft: '4%',
+    marginRight: '4%',
     marginBottom: 10,
   },
   map: {
@@ -116,30 +116,32 @@ const markdownStyles = {
   text: {
     fontSize: 19,
     lineHeight: 25,
-    fontFamily: "nunito-light",
+    fontFamily: 'nunito-light',
   },
   heading2: {
     fontSize: 24,
-    fontFamily: "nunito-bold",
+    fontFamily: 'nunito-bold',
     marginBottom: 10,
   },
   heading3: {
     fontSize: 20,
-    fontFamily: "nunito-bold",
-    textTransform: "lowercase",
-    // textTransform: "capitalize",
+    fontFamily: 'nunito-bold',
+    textTransform: 'lowercase',
     marginBottom: 10,
+    textTransform: 'lowercase',
+    textTransform: 'capitalize',
   },
   heading4: {
     fontSize: 18,
-    fontFamily: "nunito-bold",
-    textTransform: "lowercase",
-    // textTransform: "capitalize",
+    fontFamily: 'nunito-bold',
+    textTransform: 'lowercase',
     marginBottom: 10,
+    textTransform: 'lowercase',
+    textTransform: 'capitalize',
   },
   imageWrapper: {
     padding: 4,
-    width: "100%",
+    width: '100%',
   },
   hr: {
     marginBottom: 10,

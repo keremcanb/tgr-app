@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   ScrollView,
   Image,
@@ -9,20 +9,20 @@ import {
   Linking,
   Button,
   TouchableOpacity,
-} from "react-native";
-import MapView from "react-native-maps";
-import { MarkdownView } from "react-native-markdown-view";
-import useResources from "../components/useResources";
+} from 'react-native';
+import MapView from 'react-native-maps';
+import { MarkdownView } from 'react-native-markdown-view';
+import useResources from '../components/useResources';
 
-const PlaceDetailScreen = (props) => {
-  const places = useResources("places");
-  const placeID = props.navigation.getParam("placeId");
+const PlaceDetailScreen = ({ navigation }) => {
+  const places = useResources('places');
+  const placeID = navigation.getParam('placeId');
   const selectedPlace = places.find((place) => place._id === placeID);
-  const scheme = Platform.select({ ios: "maps:0,0?q=", android: "geo:0,0?q=" });
+  const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
   const latLng = `${selectedPlace && selectedPlace.lat},${
     selectedPlace && selectedPlace.lng
   }`;
-  const label = "Custom Label";
+  const label = 'Custom Label';
   const url = Platform.select({
     ios: `${scheme}${label}@${latLng}`,
     android: `${scheme}${latLng}(${label})`,
@@ -36,7 +36,7 @@ const PlaceDetailScreen = (props) => {
           <Image source={{ uri: selectedPlace.image }} style={styles.image} />
 
           <View>
-            {selectedPlace.link !== "" && (
+            {selectedPlace.link !== '' && (
               <View>
                 {/* <Button
                   title='REZERVASYON'
@@ -60,7 +60,7 @@ const PlaceDetailScreen = (props) => {
           </View>
 
           <View>
-            {selectedPlace.info !== "" && (
+            {selectedPlace.info !== '' && (
               <>
                 <Text style={styles.heading3}>Bilgiler</Text>
                 <View style={styles.line} />
@@ -70,7 +70,7 @@ const PlaceDetailScreen = (props) => {
           </View>
 
           <View>
-            {selectedPlace.link !== "" && (
+            {selectedPlace.link !== '' && (
               <View style={styles.buttonBottom}>
                 <Button
                   title="REZERVASYON"
@@ -82,7 +82,7 @@ const PlaceDetailScreen = (props) => {
           </View>
 
           <View>
-            {selectedPlace.lat && selectedPlace.lng !== "" && (
+            {selectedPlace.lat && selectedPlace.lng !== '' && (
               <>
                 <Text style={styles.heading3}>Harita</Text>
                 <View style={styles.line} />
@@ -115,7 +115,7 @@ const PlaceDetailScreen = (props) => {
 };
 
 PlaceDetailScreen.navigationOptions = (navData) => {
-  const place = navData.navigation.getParam("placeTitle");
+  const place = navData.navigation.getParam('placeTitle');
 
   return {
     headerTitle: place,
@@ -124,37 +124,37 @@ PlaceDetailScreen.navigationOptions = (navData) => {
 
 const styles = StyleSheet.create({
   image: {
-    width: "100%",
+    width: '100%',
     height: 200,
   },
   container: {
     padding: 15,
     fontSize: 19,
     lineHeight: 25,
-    fontFamily: "nunito-light",
+    fontFamily: 'nunito-light',
   },
   heading3: {
     fontSize: 20,
-    fontFamily: "nunito-bold",
-    fontWeight: "700",
+    fontFamily: 'nunito-bold',
+    fontWeight: '700',
     paddingLeft: 15,
     marginBottom: 10,
   },
   line: {
-    backgroundColor: "#ccc",
+    backgroundColor: '#ccc',
     height: 1,
-    marginLeft: "4%",
-    marginRight: "4%",
+    marginLeft: '4%',
+    marginRight: '4%',
     marginBottom: 10,
   },
   buttonTop: {
-    marginLeft: "30%",
-    marginRight: "30%",
+    marginLeft: '30%',
+    marginRight: '30%',
     marginTop: 20,
   },
   buttonBottom: {
-    marginLeft: "30%",
-    marginRight: "30%",
+    marginLeft: '30%',
+    marginRight: '30%',
     marginBottom: 20,
   },
   map: {
@@ -162,17 +162,17 @@ const styles = StyleSheet.create({
     margin: 15,
   },
   button: {
-    backgroundColor: "#2a1a73",
+    backgroundColor: '#2a1a73',
     padding: 6,
     borderRadius: 3,
-    marginLeft: "30%",
-    marginRight: "30%",
+    marginLeft: '30%',
+    marginRight: '30%',
     marginTop: 15,
   },
   buttonText: {
     fontSize: 17,
-    color: "#fff",
-    textAlign: "center",
+    color: '#fff',
+    textAlign: 'center',
     letterSpacing: 1,
   },
 });
@@ -181,26 +181,30 @@ const markdownStyles = {
   text: {
     fontSize: 19,
     lineHeight: 25,
-    fontFamily: "nunito-light",
+    fontFamily: 'nunito-light',
   },
   heading2: {
     fontSize: 24,
-    fontFamily: "nunito-bold",
+    fontFamily: 'nunito-bold',
     marginBottom: 10,
   },
   heading3: {
     fontSize: 20,
-    fontFamily: "nunito-bold",
+    fontFamily: 'nunito-bold',
     marginBottom: 10,
+    textTransform: 'lowercase',
+    textTransform: 'capitalize',
   },
   heading4: {
     fontSize: 18,
-    fontFamily: "nunito-bold",
+    fontFamily: 'nunito-bold',
     marginBottom: 10,
+    textTransform: 'lowercase',
+    textTransform: 'capitalize',
   },
   imageWrapper: {
     padding: 4,
-    width: "100%",
+    width: '100%',
   },
   hr: {
     marginBottom: 10,

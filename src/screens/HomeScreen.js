@@ -1,28 +1,26 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import { FlatList, View, Image, StyleSheet } from "react-native";
-import CategoryGridTile from "../components/CategoryGridTile";
-import useResources from "../components/useResources";
+import React from 'react';
+import { FlatList, View, Image, StyleSheet } from 'react-native';
+import CategoryGridTile from '../components/CategoryGridTile';
+import useResources from '../components/useResources';
 
 const HomeScreen = ({ navigation }) => {
-  const locations = useResources("locations");
+  const locations = useResources('locations');
 
-  const renderGridItem = (itemData) => {
-    return (
-      <CategoryGridTile
-        image={itemData.item.image}
-        title={itemData.item.title}
-        onSelect={() => {
-          navigation.navigate({
-            routeName: "Categories",
-            params: {
-              locationId: itemData.item.title,
-            },
-          });
-        }}
-      />
-    );
-  };
+  const renderGridItem = (itemData) => (
+    <CategoryGridTile
+      image={itemData.item.image}
+      title={itemData.item.title}
+      onSelect={() => {
+        navigation.navigate({
+          routeName: 'Categories',
+          params: {
+            locationId: itemData.item.title,
+          },
+        });
+      }}
+    />
+  );
 
   return (
     <FlatList
@@ -35,16 +33,14 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-HomeScreen.navigationOptions = () => {
-  return {
-    headerTitle: "Tayland Gezi Rehberi",
-    headerLeft: (
-      <View style={{ flexDirection: "row" }}>
-        <Image source={require("../assets/icon-s.png")} style={styles.header} />
-      </View>
-    ),
-  };
-};
+HomeScreen.navigationOptions = () => ({
+  headerTitle: 'Tayland Gezi Rehberi',
+  headerLeft: (
+    <View style={{ flexDirection: 'row' }}>
+      <Image source={require('../assets/icon-s.png')} style={styles.header} />
+    </View>
+  ),
+});
 
 const styles = StyleSheet.create({
   header: {
@@ -54,7 +50,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   grid: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
   },
 });
 

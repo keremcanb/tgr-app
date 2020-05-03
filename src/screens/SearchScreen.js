@@ -1,14 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
-  Text,
   FlatList,
-  ActivityIndicator,
-  TouchableOpacity,
   StyleSheet,
-} from "react-native";
-import { ListItem, SearchBar } from "react-native-elements";
-import TouchableScale from "react-native-touchable-scale";
+} from 'react-native';
+import { ListItem, SearchBar } from 'react-native-elements';
+import TouchableScale from 'react-native-touchable-scale';
 
 class SearchScreen extends Component {
   constructor(props) {
@@ -27,7 +24,7 @@ class SearchScreen extends Component {
 
   // Fetch API
   makeRemoteRequest = () => {
-    const url = `https://tgr-admin.appspot.com/api/places`;
+    const url = 'https://tgr-admin.appspot.com/api/places';
     this.setState({ loading: true });
     fetch(url)
       .then((res) => res.json())
@@ -61,18 +58,16 @@ class SearchScreen extends Component {
   };
 
   // Search Bar
-  renderHeader = () => {
-    return (
-      <SearchBar
-        lightTheme
-        round
-        onChangeText={(text) => this.searchFilterFunction(text)}
-        autoCorrect={false}
-        autoCapitalize={"none"}
-        value={this.state.value}
-      />
-    );
-  };
+  renderHeader = () => (
+    <SearchBar
+      lightTheme
+      round
+      onChangeText={(text) => this.searchFilterFunction(text)}
+      autoCorrect={false}
+      autoCapitalize="none"
+      value={this.state.value}
+    />
+  );
 
   render() {
     const { navigate } = this.props.navigation;
@@ -88,18 +83,18 @@ class SearchScreen extends Component {
               tension={100}
               activeScale={0.95}
               linearGradientProps={{
-                colors: ["#072d70", "#2661c7"],
+                colors: ['#072d70', '#2661c7'],
                 start: [1, 0],
                 end: [0.2, 0],
               }}
               // leftAvatar={{ source: { uri: item.thumbnail } }}
               title={item.title}
               bottomDivider
-              chevron={{ color: "white" }}
-              titleStyle={{ color: "white", fontWeight: "bold" }}
+              chevron={{ color: 'white' }}
+              titleStyle={{ color: 'white', fontWeight: 'bold' }}
               onPress={() => {
                 navigate({
-                  routeName: "SearchResult",
+                  routeName: 'SearchResult',
                   params: {
                     placeId: item._id,
                     placeTitle: item.title,
@@ -121,17 +116,15 @@ class SearchScreen extends Component {
   }
 }
 
-SearchScreen.navigationOptions = (navData) => {
-  return {
-    headerTitle: "Ara",
-  };
-};
+SearchScreen.navigationOptions = (navData) => ({
+  headerTitle: 'Ara',
+});
 
 const styles = StyleSheet.create({
   loading: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   Image,
   Linking,
   TouchableOpacity,
-} from "react-native";
+} from 'react-native';
 
 const InfoScreen = () => {
   return (
@@ -19,13 +19,13 @@ const InfoScreen = () => {
           derlenmiştir.
         </Text>
         <TouchableOpacity
-          onPress={() => Linking.openURL("http://www.taylandgezi.com")}
+          onPress={() => Linking.openURL('http://www.taylandgezi.com')}
         >
           <Image
             style={styles.logo}
             source={{
               uri:
-                "http://www.taylandgezi.com/wp-content/uploads/2016/01/tayland-gezi-rehberi-l.gif",
+                'http://www.taylandgezi.com/wp-content/uploads/2016/01/tayland-gezi-rehberi-l.gif',
             }}
           />
         </TouchableOpacity>
@@ -36,7 +36,7 @@ const InfoScreen = () => {
         <TouchableOpacity
           onPress={() =>
             Linking.openURL(
-              "https://play.google.com/store/books/details/Keremcan_B%C3%BCy%C3%BCkta%C5%9Fk%C4%B1n_Tayland_Gezi_Rehberi?id=eK10BgAAQBAJ"
+              'https://play.google.com/store/books/details/Keremcan_B%C3%BCy%C3%BCkta%C5%9Fk%C4%B1n_Tayland_Gezi_Rehberi?id=eK10BgAAQBAJ'
             )
           }
         >
@@ -44,7 +44,7 @@ const InfoScreen = () => {
             style={styles.image}
             source={{
               uri:
-                "https://books.google.com/books/content/images/frontcover/eK10BgAAQBAJ?fife=w200-h300",
+                'https://books.google.com/books/content/images/frontcover/eK10BgAAQBAJ?fife=w200-h300',
             }}
           />
         </TouchableOpacity>
@@ -72,7 +72,7 @@ const InfoScreen = () => {
 
 InfoScreen.navigationOptions = () => {
   return {
-    headerTitle: "Hakkında",
+    headerTitle: 'Hakkında',
   };
 };
 
@@ -81,9 +81,9 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 19,
     lineHeight: 25,
-    fontFamily: "nunito-light",
+    fontFamily: 'nunito-light',
     marginBottom: 5,
-    textAlign: "center",
+    textAlign: 'center',
   },
   image: {
     marginLeft: 100,
