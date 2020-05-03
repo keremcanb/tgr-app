@@ -8,7 +8,6 @@ import {
   Platform,
   Linking,
   Button,
-  TouchableOpacity,
 } from 'react-native';
 import MapView from 'react-native-maps';
 import { MarkdownView } from 'react-native-markdown-view';
@@ -36,19 +35,13 @@ const PlaceDetailScreen = ({ navigation }) => {
           <Image source={{ uri: selectedPlace.image }} style={styles.image} />
 
           <View>
-            {selectedPlace.link !== '' && (
-              <View>
-                {/* <Button
-                  title='REZERVASYON'
-                  color='#2a1a73'
+            {selectedPlace.placesLink !== '' && (
+              <View style={styles.buttonTop}>
+                <Button
+                  title="REZERVASYON"
+                  color="#2a1a73"
                   onPress={() => Linking.openURL(bookingUrl)}
-                /> */}
-                <TouchableOpacity
-                  onPress={() => Linking.openURL(bookingUrl)}
-                  style={styles.button}
-                >
-                  <Text style={styles.buttonText}>REZERVASYON</Text>
-                </TouchableOpacity>
+                />
               </View>
             )}
           </View>
@@ -70,7 +63,7 @@ const PlaceDetailScreen = ({ navigation }) => {
           </View>
 
           <View>
-            {selectedPlace.link !== '' && (
+            {selectedPlace.placesLink !== '' && (
               <View style={styles.buttonBottom}>
                 <Button
                   title="REZERVASYON"

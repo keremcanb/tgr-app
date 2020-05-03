@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import { enableScreens } from 'react-native-screens';
+// import { enableScreens } from 'react-native-screens';
 import PlacesNavigator from './src/components/PlacesNavigator';
 
-enableScreens();
+// enableScreens();
 
 const fetchFonts = () => Font.loadAsync({
   'nunito-bold': require('./src/assets/fonts/Nunito-Bold.ttf'),

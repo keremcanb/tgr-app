@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { FlatList, View, Image, StyleSheet } from 'react-native';
 import CategoryGridTile from '../components/CategoryGridTile';
@@ -28,7 +27,6 @@ const HomeScreen = ({ navigation }) => {
       renderItem={renderGridItem}
       numColumns={2}
       keyExtractor={(item) => item._id}
-      style={styles.grid}
     />
   );
 };
@@ -37,20 +35,17 @@ HomeScreen.navigationOptions = () => ({
   headerTitle: 'Tayland Gezi Rehberi',
   headerLeft: (
     <View style={{ flexDirection: 'row' }}>
-      <Image source={require('../assets/icon-s.png')} style={styles.header} />
+      <Image source={require('../assets/icon-s.png')} style={styles.icon} />
     </View>
   ),
 });
 
 const styles = StyleSheet.create({
-  header: {
+  icon: {
     width: 40,
     height: 40,
     borderRadius: 40 / 2,
     marginLeft: 15,
-  },
-  grid: {
-    backgroundColor: '#fff',
   },
 });
 

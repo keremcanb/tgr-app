@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { FlatList } from 'react-native';
 import CategoryGridTile from '../components/CategoryGridTile';
