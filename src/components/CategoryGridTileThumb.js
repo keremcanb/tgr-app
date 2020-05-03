@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   TouchableOpacity,
   View,
@@ -6,28 +6,25 @@ import {
   StyleSheet,
   Platform,
   TouchableNativeFeedback,
-  ImageBackground
-} from 'react-native'
+  ImageBackground,
+} from "react-native";
 
-const CategoryGridTileThumb = props => {
-  let TouchableCmp = TouchableOpacity
+const CategoryGridTileThumb = ({ onSelect, image, title }) => {
+  let TouchableCmp = TouchableOpacity;
 
-  if (Platform.OS === 'android' && Platform.Version >= 21) {
-    TouchableCmp = TouchableNativeFeedback
+  if (Platform.OS === "android" && Platform.Version >= 21) {
+    TouchableCmp = TouchableNativeFeedback;
   }
 
   return (
     <View style={styles.PlaceItem}>
-      <TouchableCmp onPress={props.onSelect}>
+      <TouchableCmp onPress={onSelect}>
         <View>
           <View style={{ ...styles.placeRow, ...styles.placeHeader }}>
-            <ImageBackground
-              source={{ uri: props.image }}
-              style={styles.bgImage}
-            >
+            <ImageBackground source={{ uri: image }} style={styles.bgImage}>
               <View style={styles.titleContainer}>
                 <Text style={styles.title} numberOfLines={2}>
-                  {props.title}
+                  {title}
                 </Text>
               </View>
             </ImageBackground>
@@ -35,32 +32,32 @@ const CategoryGridTileThumb = props => {
         </View>
       </TouchableCmp>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   PlaceItem: {
     flex: 1 / 2,
     height: 150,
-    width: '100%',
-    margin: 1
+    width: "100%",
+    margin: 1,
   },
   bgImage: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'flex-end'
+    width: "100%",
+    height: "100%",
+    justifyContent: "flex-end",
   },
   titleContainer: {
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: "rgba(0,0,0,0.5)",
     paddingVertical: 3,
-    paddingHorizontal: 12
+    paddingHorizontal: 12,
   },
   title: {
-    fontFamily: 'nunito-light',
+    fontFamily: "nunito-light",
     fontSize: 21,
-    color: 'white',
-    textAlign: 'center'
-  }
-})
+    color: "white",
+    textAlign: "center",
+  },
+});
 
-export default CategoryGridTileThumb
+export default CategoryGridTileThumb;

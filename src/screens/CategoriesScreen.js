@@ -1,46 +1,33 @@
-import React, { useState, useEffect } from 'react'
-import { FlatList } from 'react-native'
-import axios from 'axios'
-import CategoryGridTile from '../components/CategoryGridTile'
+import React, { useState, useEffect } from "react";
+import { FlatList } from "react-native";
+import axios from "axios";
+import CategoryGridTile from "../components/CategoryGridTile";
+import useResources from "../components/useResources";
 
-const CategoriesScreen = props => {
-  const [categories, setCategories] = useState([])
-
-  useEffect(() => {
-    const getCategories = async () => {
-      const result = await axios.get(
-        'https://tgr-admin.appspot.com/api/categories'
-      )
-
-      setCategories(result.data)
-    }
-
-    getCategories()
-  }, [])
-
-  const locations = props.navigation.getParam('locationId')
-
+const CategoriesScreen = ({ navigation }) => {
+  const categories = useResources("categories");
+  const locations = navigation.getParam("locationId");
   const displayedCategories = categories.filter(
-    arr => arr.location.indexOf(locations) >= 0
-  )
+    (arr) => arr.location.indexOf(locations) >= 0
+  );
 
-  const renderGridItem = itemData => {
+  const renderGridItem = (itemData) => {
     return (
       <CategoryGridTile
         image={itemData.item.image}
         title={itemData.item.title}
         onSelect={() => {
-          props.navigation.navigate({
-            routeName: 'CategoryPlaces',
+          navigation.navigate({
+            routeName: "CategoryPlaces",
             params: {
               categoryId: itemData.item.title,
-              locationId: locations
-            }
-          })
+              locationId: locations,
+            },
+          });
         }}
       />
-    )
-  }
+    );
+  };
 
   return (
     <FlatList
@@ -49,15 +36,15 @@ const CategoriesScreen = props => {
       numColumns={2}
       keyExtractor={(item, index) => item._id}
     />
-  )
-}
+  );
+};
 
-CategoriesScreen.navigationOptions = navData => {
-  const locId = navData.navigation.getParam('locationId')
+CategoriesScreen.navigationOptions = (navData) => {
+  const locId = navData.navigation.getParam("locationId");
 
   return {
-    headerTitle: locId
-  }
-}
+    headerTitle: locId,
+  };
+};
 
-export default CategoriesScreen
+export default CategoriesScreen;

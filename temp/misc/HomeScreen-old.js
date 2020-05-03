@@ -2,10 +2,21 @@ import React, { useState, useEffect } from "react";
 import { FlatList, View, Image, StyleSheet } from "react-native";
 import axios from "axios";
 import CategoryGridTile from "../components/CategoryGridTile";
-import useResources from "../components/useResources";
 
 const HomeScreen = ({ navigation }) => {
-  const locations = useResources("locations");
+  const [locations, setLocations] = useState([]);
+
+  useEffect(() => {
+    const getLocations = async () => {
+      const result = await axios.get(
+        "https://tgr-admin.appspot.com/api/locations"
+      );
+
+      setLocations(result.data);
+    };
+
+    getLocations();
+  }, []);
 
   const renderGridItem = (itemData) => {
     return (
@@ -26,11 +37,11 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <FlatList
+      style={styles.grid}
       data={locations}
       renderItem={renderGridItem}
       numColumns={2}
       keyExtractor={(item, index) => item._id}
-      style={styles.grid}
     />
   );
 };

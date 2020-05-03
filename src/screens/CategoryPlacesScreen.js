@@ -1,36 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import { FlatList } from 'react-native'
-import axios from 'axios'
-import CategoryGridTileThumb from '../components/CategoryGridTileThumb'
+import React, { useState, useEffect } from "react";
+import { FlatList } from "react-native";
+import axios from "axios";
+import CategoryGridTile from "../components/CategoryGridTile";
+import useResources from "../components/useResources";
 
-const PlacesScreen = props => {
-  const [places, setPlaces] = useState([])
-
-  useEffect(() => {
-    const getPlaces = async () => {
-      const result = await axios.get('https://tgr-admin.appspot.com/api/places')
-
-      setPlaces(result.data)
-    }
-
-    getPlaces()
-  }, [])
-
-  const categories = props.navigation.getParam('categoryId')
-  const locations = props.navigation.getParam('locationId')
-
+const PlacesScreen = ({ navigation }) => {
+  const places = useResources("places");
+  const categories = navigation.getParam("categoryId");
+  const locations = navigation.getParam("locationId");
   const displayedPlaces = places.filter(
-    arr => arr.category === categories && arr.location === locations
-  )
+    (arr) => arr.category === categories && arr.location === locations
+  );
 
-  const renderGridItem = itemData => {
+  const renderGridItem = (itemData) => {
     return (
-      <CategoryGridTileThumb
+      <CategoryGridTile
         image={itemData.item.thumbnail}
         title={itemData.item.title}
         onSelect={() => {
-          props.navigation.navigate({
-            routeName: 'PlaceDetail',
+          navigation.navigate({
+            routeName: "PlaceDetail",
             params: {
               placeId: itemData.item._id,
               placeTitle: itemData.item.title,
@@ -39,13 +28,13 @@ const PlacesScreen = props => {
               placeInfo: itemData.item.info,
               placeLink: itemData.item.link,
               placeLat: itemData.item.lat,
-              placeLng: itemData.item.lng
-            }
-          })
+              placeLng: itemData.item.lng,
+            },
+          });
         }}
       />
-    )
-  }
+    );
+  };
 
   return (
     <FlatList
@@ -54,15 +43,15 @@ const PlacesScreen = props => {
       numColumns={2}
       keyExtractor={(item, index) => item._id}
     />
-  )
-}
+  );
+};
 
-PlacesScreen.navigationOptions = navData => {
-  const catId = navData.navigation.getParam('categoryId')
+PlacesScreen.navigationOptions = (navData) => {
+  const catId = navData.navigation.getParam("categoryId");
 
   return {
-    headerTitle: catId
-  }
-}
+    headerTitle: catId,
+  };
+};
 
-export default PlacesScreen
+export default PlacesScreen;

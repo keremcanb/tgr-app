@@ -1,87 +1,85 @@
-import React from 'react'
-import { Platform } from 'react-native'
-import { createAppContainer } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
-import { createBottomTabNavigator } from 'react-navigation-tabs'
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
-import { Ionicons } from '@expo/vector-icons'
-import Colors from '../constants/Colors'
+import React from "react";
+import { Platform } from "react-native";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { createBottomTabNavigator } from "react-navigation-tabs";
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
+import Colors from "../constants/Colors";
 
-import HomeScreen from '../screens/HomeScreen'
-import CategoriesScreen from '../screens/CategoriesScreen'
-import CategoryPlacesScreen from '../screens/CategoryPlacesScreen'
-import PlaceDetailScreen from '../screens/PlaceDetailScreen'
-import SearchScreen from '../screens/SearchScreen'
-import SearchResultScreen from '../screens/SearchResultScreen'
-import InfoScreen from '../screens/InfoScreen'
+import HomeScreen from "../screens/HomeScreen";
+import CategoriesScreen from "../screens/CategoriesScreen";
+import CategoryPlacesScreen from "../screens/CategoryPlacesScreen";
+import PlaceDetailScreen from "../screens/PlaceDetailScreen";
+import SearchScreen from "../screens/SearchScreen";
+import SearchResultScreen from "../screens/SearchResultScreen";
+import InfoScreen from "../screens/InfoScreen";
 // import FavoritesScreen from '../screens/FavoritesScreen'
 
 // Default stack options
 const defaultStackNavOptions = {
   headerStyle: {
-    backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : '',
-    height: 50
+    backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "",
+    height: 50,
   },
-  headerForceInset: { top: 'never', bottom: 'never' },
   headerTitleStyle: {
-    fontFamily: 'nunito-bold'
+    fontFamily: "nunito-bold",
   },
   headerBackTitleStyle: {
-    fontFamily: 'nunito-light'
+    fontFamily: "nunito-light",
   },
-  headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
-  headerTitle: 'A Screen'
-}
+  headerTintColor: Platform.OS === "android" ? "white" : Colors.primaryColor,
+};
 
 // Main navigator
 const PlacesNavigator = createStackNavigator(
   {
     Home: {
-      screen: HomeScreen
+      screen: HomeScreen,
     },
     Categories: {
-      screen: CategoriesScreen
+      screen: CategoriesScreen,
     },
     CategoryPlaces: {
-      screen: CategoryPlacesScreen
+      screen: CategoryPlacesScreen,
     },
     PlaceDetail: {
-      screen: PlaceDetailScreen
+      screen: PlaceDetailScreen,
     },
     Search: {
-      screen: SearchScreen
+      screen: SearchScreen,
     },
     SearchResult: {
-      screen: SearchResultScreen
+      screen: SearchResultScreen,
     },
     Info: {
-      screen: InfoScreen
-    }
+      screen: InfoScreen,
+    },
   },
   {
-    defaultNavigationOptions: defaultStackNavOptions
+    defaultNavigationOptions: defaultStackNavOptions,
   }
-)
+);
 
 // Search navigator
 const SearchNavigator = createStackNavigator(
   {
-    Search: SearchScreen
+    Search: SearchScreen,
   },
   {
-    defaultNavigationOptions: defaultStackNavOptions
+    defaultNavigationOptions: defaultStackNavOptions,
   }
-)
+);
 
 // Info navigator
 const InfoNavigator = createStackNavigator(
   {
-    Info: InfoScreen
+    Info: InfoScreen,
   },
   {
-    defaultNavigationOptions: defaultStackNavOptions
+    defaultNavigationOptions: defaultStackNavOptions,
   }
-)
+);
 
 // Favorites navigator
 // const FavNavigator = createStackNavigator(
@@ -98,38 +96,38 @@ const tabScreenConfig = {
   Places: {
     screen: PlacesNavigator,
     navigationOptions: {
-      tabBarIcon: tabInfo => {
-        return <Ionicons name='ios-home' size={25} color={tabInfo.tintColor} />
+      tabBarIcon: (tabInfo) => {
+        return <Ionicons name="ios-home" size={25} color={tabInfo.tintColor} />;
       },
-      tabBarColor: Colors.primaryColor
-    }
+      tabBarColor: Colors.primaryColor,
+    },
   },
   Search: {
     screen: SearchNavigator,
     navigationOptions: {
-      tabBarIcon: tabInfo => {
+      tabBarIcon: (tabInfo) => {
         return (
-          <Ionicons name='ios-search' size={25} color={tabInfo.tintColor} />
-        )
+          <Ionicons name="ios-search" size={25} color={tabInfo.tintColor} />
+        );
       },
-      tabBarColor: Colors.primaryColor
-    }
+      tabBarColor: Colors.primaryColor,
+    },
   },
   Info: {
     screen: InfoNavigator,
     navigationOptions: {
-      tabBarIcon: tabInfo => {
+      tabBarIcon: (tabInfo) => {
         return (
           <Ionicons
-            name='ios-information-circle-outline'
+            name="ios-information-circle-outline"
             size={25}
             color={tabInfo.tintColor}
           />
-        )
+        );
       },
-      tabBarColor: Colors.primaryColor
-    }
-  }
+      tabBarColor: Colors.primaryColor,
+    },
+  },
   // Favorites: {
   //   screen: FavNavigator,
   //   navigationOptions: {
@@ -141,23 +139,23 @@ const tabScreenConfig = {
   //     tabBarColor: Colors.primaryColor
   //   }
   // }
-}
+};
 
 // Tab navigator options
 const PlacesFavTabNavigator =
-  Platform.OS === 'android'
+  Platform.OS === "android"
     ? createMaterialBottomTabNavigator(tabScreenConfig, {
-      activeTintColor: 'white',
-      shifting: true,
-      labeled: false,
-      barStyle: {
-        backgroundColor: Colors.primaryColor
-      }
-    })
+        activeTintColor: "white",
+        shifting: true,
+        labeled: false,
+        barStyle: {
+          backgroundColor: Colors.primaryColor,
+        },
+      })
     : createBottomTabNavigator(tabScreenConfig, {
-      tabBarOptions: {
-        activeTintColor: Colors.accentColor
-      }
-    })
+        tabBarOptions: {
+          activeTintColor: Colors.accentColor,
+        },
+      });
 
-export default createAppContainer(PlacesFavTabNavigator)
+export default createAppContainer(PlacesFavTabNavigator);

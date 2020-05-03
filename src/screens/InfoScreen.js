@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   View,
   Text,
@@ -6,10 +6,10 @@ import {
   ScrollView,
   Image,
   Linking,
-  TouchableOpacity
-} from 'react-native'
+  TouchableOpacity,
+} from "react-native";
 
-const InfoScreen = props => {
+const InfoScreen = () => {
   return (
     <ScrollView>
       <View>
@@ -19,13 +19,13 @@ const InfoScreen = props => {
           derlenmiştir.
         </Text>
         <TouchableOpacity
-          onPress={() => Linking.openURL('http://www.taylandgezi.com')}
+          onPress={() => Linking.openURL("http://www.taylandgezi.com")}
         >
           <Image
             style={styles.logo}
             source={{
               uri:
-                'http://www.taylandgezi.com/wp-content/uploads/2016/01/tayland-gezi-rehberi-l.gif'
+                "http://www.taylandgezi.com/wp-content/uploads/2016/01/tayland-gezi-rehberi-l.gif",
             }}
           />
         </TouchableOpacity>
@@ -36,7 +36,7 @@ const InfoScreen = props => {
         <TouchableOpacity
           onPress={() =>
             Linking.openURL(
-              'https://play.google.com/store/books/details/Keremcan_B%C3%BCy%C3%BCkta%C5%9Fk%C4%B1n_Tayland_Gezi_Rehberi?id=eK10BgAAQBAJ'
+              "https://play.google.com/store/books/details/Keremcan_B%C3%BCy%C3%BCkta%C5%9Fk%C4%B1n_Tayland_Gezi_Rehberi?id=eK10BgAAQBAJ"
             )
           }
         >
@@ -44,7 +44,7 @@ const InfoScreen = props => {
             style={styles.image}
             source={{
               uri:
-                'https://books.google.com/books/content/images/frontcover/eK10BgAAQBAJ?fife=w200-h300'
+                "https://books.google.com/books/content/images/frontcover/eK10BgAAQBAJ?fife=w200-h300",
             }}
           />
         </TouchableOpacity>
@@ -67,38 +67,38 @@ const InfoScreen = props => {
         </Text>
       </View>
     </ScrollView>
-  )
-}
+  );
+};
 
-InfoScreen.navigationOptions = navData => {
+InfoScreen.navigationOptions = (navData) => {
   return {
-    headerTitle: 'Hakkında'
-  }
-}
+    headerTitle: "Hakkında",
+  };
+};
 
 const styles = StyleSheet.create({
   container: {
     padding: 15,
     fontSize: 19,
     lineHeight: 25,
-    fontFamily: 'nunito-light',
+    fontFamily: "nunito-light",
     marginBottom: 5,
-    textAlign: 'center'
+    textAlign: "center",
   },
   image: {
     marginLeft: 100,
     marginRight: 100,
     width: 150,
     height: 200,
-    marginBottom: 20
+    marginBottom: 20,
   },
   logo: {
     marginLeft: 100,
     marginRight: 100,
     width: 170,
     height: 80,
-    marginBottom: 5
-  }
-})
+    marginBottom: 5,
+  },
+});
 
-export default InfoScreen
+export default InfoScreen;

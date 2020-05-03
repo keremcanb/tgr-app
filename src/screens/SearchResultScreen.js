@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   ScrollView,
   Image,
@@ -6,26 +6,26 @@ import {
   StyleSheet,
   View,
   Platform,
-  Linking
-} from 'react-native'
-import MapView from 'react-native-maps'
-import { MarkdownView } from 'react-native-markdown-view'
+  Linking,
+} from "react-native";
+import MapView from "react-native-maps";
+import { MarkdownView } from "react-native-markdown-view";
 
-const PlaceDetailScreen = props => {
-  const placesTitle = props.navigation.getParam('placeTitle')
-  const placesImage = props.navigation.getParam('placeImage')
-  const placesContent = props.navigation.getParam('placeContent')
-  const placesInfo = props.navigation.getParam('placeInfo')
-  const placesLat = props.navigation.getParam('placeLat')
-  const placesLng = props.navigation.getParam('placeLng')
+const PlaceDetailScreen = ({ navigation }) => {
+  const placesTitle = navigation.getParam("placeTitle");
+  const placesImage = navigation.getParam("placeImage");
+  const placesContent = navigation.getParam("placeContent");
+  const placesInfo = navigation.getParam("placeInfo");
+  const placesLat = navigation.getParam("placeLat");
+  const placesLng = navigation.getParam("placeLng");
 
-  const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' })
-  const latLng = `${placesLat},${placesLng}`
-  const label = 'Custom Label'
+  const scheme = Platform.select({ ios: "maps:0,0?q=", android: "geo:0,0?q=" });
+  const latLng = `${placesLat},${placesLng}`;
+  const label = "Custom Label";
   const url = Platform.select({
     ios: `${scheme}${label}@${latLng}`,
-    android: `${scheme}${latLng}(${label})`
-  })
+    android: `${scheme}${latLng}(${label})`,
+  });
 
   return (
     <ScrollView>
@@ -36,7 +36,7 @@ const PlaceDetailScreen = props => {
       </View>
 
       <View>
-        {placesInfo !== '' && (
+        {placesInfo !== "" && (
           <>
             <Text style={styles.heading3}>Bilgiler</Text>
             <View style={styles.line} />
@@ -46,7 +46,7 @@ const PlaceDetailScreen = props => {
       </View>
 
       <View>
-        {placesLat && placesLat !== '' && (
+        {placesLat && placesLat !== "" && (
           <>
             <Text style={styles.heading3}>Harita</Text>
             <View style={styles.line} />
@@ -57,7 +57,7 @@ const PlaceDetailScreen = props => {
                 latitude: placesLat,
                 longitude: placesLng,
                 latitudeDelta: 0.0022,
-                longitudeDelta: 0.0121
+                longitudeDelta: 0.0121,
               }}
             >
               <MapView.Marker
@@ -70,80 +70,80 @@ const PlaceDetailScreen = props => {
         )}
       </View>
     </ScrollView>
-  )
-}
+  );
+};
 
-PlaceDetailScreen.navigationOptions = navData => {
-  const place = navData.navigation.getParam('placeTitle')
+PlaceDetailScreen.navigationOptions = (navData) => {
+  const place = navData.navigation.getParam("placeTitle");
 
   return {
-    headerTitle: place
-  }
-}
+    headerTitle: place,
+  };
+};
 
 const styles = StyleSheet.create({
   image: {
-    width: '100%',
-    height: 200
+    width: "100%",
+    height: 200,
   },
   container: {
     padding: 15,
     fontSize: 19,
     lineHeight: 25,
-    fontFamily: 'nunito-light'
+    fontFamily: "nunito-light",
   },
   heading3: {
     fontSize: 20,
-    fontFamily: 'nunito-bold',
-    fontWeight: '700',
+    fontFamily: "nunito-bold",
+    fontWeight: "700",
     paddingLeft: 15,
-    marginBottom: 10
+    marginBottom: 10,
   },
   line: {
-    backgroundColor: '#ccc',
+    backgroundColor: "#ccc",
     height: 1,
-    marginLeft: '4%',
-    marginRight: '4%',
-    marginBottom: 10
+    marginLeft: "4%",
+    marginRight: "4%",
+    marginBottom: 10,
   },
   map: {
     height: 300,
-    margin: 15
-  }
-})
+    margin: 15,
+  },
+});
 
 const markdownStyles = {
   text: {
     fontSize: 19,
     lineHeight: 25,
-    fontFamily: 'nunito-light'
+    fontFamily: "nunito-light",
   },
   heading2: {
     fontSize: 24,
-    fontFamily: 'nunito-bold',
-    marginBottom: 10
+    fontFamily: "nunito-bold",
+    marginBottom: 10,
   },
   heading3: {
     fontSize: 20,
-    fontFamily: 'nunito-bold',
-    textTransform: 'lowercase',
-    textTransform: 'capitalize',
-    marginBottom: 10
+    fontFamily: "nunito-bold",
+    textTransform: "lowercase",
+    textTransform: "capitalize",
+    marginBottom: 10,
   },
   heading4: {
     fontSize: 18,
-    fontFamily: 'nunito-bold',
-    textTransform: 'lowercase',
-    textTransform: 'capitalize',
-    marginBottom: 10
+    fontFamily: "nunito-bold",
+    textTransform: "lowercase",
+    textTransform: "capitalize",
+    marginBottom: 10,
   },
   imageWrapper: {
     padding: 4,
-    width: '100%'
+    width: "100%",
   },
   hr: {
-    marginBottom: 10
-  }
-}
+    marginBottom: 10,
+  },
+};
 
-export default PlaceDetailScreen
+export default PlaceDetailScreen;

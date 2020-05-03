@@ -1,10 +1,10 @@
 {
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 12924,
+  "packagerPid": 10280,
   "expoServerNgrokUrl": "https://de-m7i.gezginrocker.tgr-app.exp.direct",
   "packagerNgrokUrl": "https://packager.de-m7i.gezginrocker.tgr-app.exp.direct",
-  "ngrokPid": 12316,
+  "ngrokPid": 12644,
   "devToolsPort": 19002,
   "webpackServerPort": null
 }
