@@ -38,10 +38,10 @@ const PlacesScreen = ({ navigation }) => {
 };
 
 PlacesScreen.navigationOptions = (navData) => {
-  const catId = navData.navigation.getParam('categoryId');
+  const categoryTitle = navData.navigation.getParam('categoryTitle');
 
   return {
-    headerTitle: catId,
+    headerTitle: categoryTitle,
   };
 };
 

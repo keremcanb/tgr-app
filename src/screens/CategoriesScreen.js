@@ -37,10 +37,10 @@ const CategoriesScreen = ({ navigation }) => {
 };
 
 CategoriesScreen.navigationOptions = (navData) => {
-  const locId = navData.navigation.getParam('locationId');
+  const locationTitle = navData.navigation.getParam('locationTitle');
 
   return {
-    headerTitle: locId,
+    headerTitle: locationTitle,
   };
 };
 
