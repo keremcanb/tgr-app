@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import {
-  View,
-  FlatList,
-  StyleSheet,
-} from 'react-native';
+import { View, FlatList } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 
@@ -11,9 +7,7 @@ class SearchScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
       data: [],
-      error: null,
     };
     this.arrayholder = [];
   }
@@ -25,20 +19,13 @@ class SearchScreen extends Component {
   // Fetch API
   makeRemoteRequest = () => {
     const url = 'https://tgr-admin.appspot.com/api/places';
-    this.setState({ loading: true });
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
         this.setState({
           data: [],
-          // data: res,
-          error: res.error || null,
-          loading: false,
         });
         this.arrayholder = res;
-      })
-      .catch((error) => {
-        this.setState({ error, loading: false });
       });
   };
 
@@ -116,16 +103,8 @@ class SearchScreen extends Component {
   }
 }
 
-SearchScreen.navigationOptions = (navData) => ({
+SearchScreen.navigationOptions = () => ({
   headerTitle: 'Ara',
-});
-
-const styles = StyleSheet.create({
-  loading: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 });
 
 export default SearchScreen;

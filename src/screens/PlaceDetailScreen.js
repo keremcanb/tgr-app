@@ -13,29 +13,33 @@ import MapView from 'react-native-maps';
 import { MarkdownView } from 'react-native-markdown-view';
 import useResources from '../components/useResources';
 
+// Before your getPlaces effect resolves, places will be an empty array, so place = places.find(...) will return undefined.
+
+// The issue is with the place, before getPlaces complete, the places is an empty array and .find method returns undefined. Accessing an image prop on place undefined throws an error. Perform null check before accessing the image prop on place.
+
 const PlaceDetailScreen = ({ navigation }) => {
   const places = useResources('places');
-  const placeID = navigation.getParam('placeId');
-  const selectedPlace = places.find((place) => place._id === placeID);
+  const selectedPlace = navigation.getParam('placeId');
+  const place = places.find((item) => item._id === selectedPlace);
+  const bookingUrl = `${place && place.link}`;
   const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
-  const latLng = `${selectedPlace && selectedPlace.lat},${
-    selectedPlace && selectedPlace.lng
-  }`;
   const label = 'Custom Label';
+  const latLng = `${place && place.lat},${
+    place && place.lng
+  }`;
   const url = Platform.select({
     ios: `${scheme}${label}@${latLng}`,
     android: `${scheme}${latLng}(${label})`,
   });
-  const bookingUrl = `${selectedPlace && selectedPlace.link}`;
 
   return (
     <ScrollView>
-      {selectedPlace && (
+      {place && (
         <>
-          <Image source={{ uri: selectedPlace.image }} style={styles.image} />
+          <Image source={{ uri: place.image }} style={styles.image} />
 
           <View>
-            {selectedPlace.placesLink !== '' && (
+            {!!place.link && (
               <View style={styles.buttonTop}>
                 <Button
                   title="REZERVASYON"
@@ -48,22 +52,22 @@ const PlaceDetailScreen = ({ navigation }) => {
 
           <View style={styles.container}>
             <MarkdownView styles={markdownStyles}>
-              {selectedPlace.content}
+              {place.content}
             </MarkdownView>
           </View>
 
           <View>
-            {selectedPlace.info !== '' && (
+            {!!place.info && (
               <>
                 <Text style={styles.heading3}>Bilgiler</Text>
                 <View style={styles.line} />
-                <Text style={styles.container}>{selectedPlace.info}</Text>
+                <Text style={styles.container}>{place.info}</Text>
               </>
             )}
           </View>
 
           <View>
-            {selectedPlace.placesLink !== '' && (
+            {!!place.link && (
               <View style={styles.buttonBottom}>
                 <Button
                   title="REZERVASYON"
@@ -75,7 +79,7 @@ const PlaceDetailScreen = ({ navigation }) => {
           </View>
 
           <View>
-            {selectedPlace.lat && selectedPlace.lng !== '' && (
+            {!!place.lat && !!place.lng && (
               <>
                 <Text style={styles.heading3}>Harita</Text>
                 <View style={styles.line} />
@@ -83,18 +87,18 @@ const PlaceDetailScreen = ({ navigation }) => {
                   showsUserLocation
                   style={styles.map}
                   initialRegion={{
-                    latitude: selectedPlace.lat,
-                    longitude: selectedPlace.lng,
+                    latitude: place.lat,
+                    longitude: place.lng,
                     latitudeDelta: 0.0022,
                     longitudeDelta: 0.0121,
                   }}
                 >
                   <MapView.Marker
                     coordinate={{
-                      latitude: selectedPlace.lat,
-                      longitude: selectedPlace.lng,
+                      latitude: place.lat,
+                      longitude: place.lng,
                     }}
-                    title={selectedPlace.title}
+                    title={place.title}
                     onPress={() => Linking.openURL(url)}
                   />
                 </MapView>
@@ -140,20 +144,6 @@ const styles = StyleSheet.create({
     marginRight: '4%',
     marginBottom: 10,
   },
-  buttonTop: {
-    marginLeft: '30%',
-    marginRight: '30%',
-    marginTop: 20,
-  },
-  buttonBottom: {
-    marginLeft: '30%',
-    marginRight: '30%',
-    marginBottom: 20,
-  },
-  map: {
-    height: 300,
-    margin: 15,
-  },
   button: {
     backgroundColor: '#2a1a73',
     padding: 6,
@@ -167,6 +157,20 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     letterSpacing: 1,
+  },
+  buttonTop: {
+    marginLeft: '30%',
+    marginRight: '30%',
+    marginTop: 20,
+  },
+  buttonBottom: {
+    marginLeft: '30%',
+    marginRight: '30%',
+    marginBottom: 20,
+  },
+  map: {
+    height: 300,
+    margin: 15,
   },
 });
 
