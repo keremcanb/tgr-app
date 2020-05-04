@@ -5,8 +5,8 @@ import useResources from '../components/useResources';
 
 const PlacesScreen = ({ navigation }) => {
   const places = useResources('places');
-  const categories = navigation.getParam('categoryId');
-  const locations = navigation.getParam('locationId');
+  const categories = navigation.getParam('categoryTitle');
+  const locations = navigation.getParam('locationTitle');
   const displayedPlaces = places.filter(
     (item) => item.category === categories && item.location === locations
   );

@@ -14,7 +14,7 @@ const HomeScreen = ({ navigation }) => {
         navigation.navigate({
           routeName: 'Categories',
           params: {
-            locationId: itemData.item.title,
+            locationTitle: itemData.item.title,
           },
         });
       }}

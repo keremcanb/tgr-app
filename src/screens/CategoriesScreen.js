@@ -5,9 +5,9 @@ import useResources from '../components/useResources';
 
 const CategoriesScreen = ({ navigation }) => {
   const categories = useResources('categories');
-  const locations = navigation.getParam('locationId');
+  const selectedLocation = navigation.getParam('locationTitle');
   const displayedCategories = categories.filter(
-    (item) => item.location.indexOf(locations) >= 0
+    (item) => item.location.indexOf(selectedLocation) >= 0
   );
 
   const renderGridItem = (itemData) => (
@@ -18,8 +18,8 @@ const CategoriesScreen = ({ navigation }) => {
         navigation.navigate({
           routeName: 'CategoryPlaces',
           params: {
-            categoryId: itemData.item.title,
-            locationId: locations,
+            categoryTitle: itemData.item.title,
+            locationTitle: selectedLocation,
           },
         });
       }}

@@ -105,6 +105,7 @@ const PlaceDetailScreen = ({ navigation }) => {
               </>
             )}
           </View>
+
         </>
       )}
     </ScrollView>
@@ -112,10 +113,10 @@ const PlaceDetailScreen = ({ navigation }) => {
 };
 
 PlaceDetailScreen.navigationOptions = (navData) => {
-  const place = navData.navigation.getParam('placeTitle');
+  const placeTitle = navData.navigation.getParam('placeTitle');
 
   return {
-    headerTitle: place,
+    headerTitle: placeTitle,
   };
 };
 
