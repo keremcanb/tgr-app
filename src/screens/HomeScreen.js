@@ -8,7 +8,7 @@ const HomeScreen = ({ navigation }) => {
 
   const renderGridItem = (itemData) => (
     <CategoryGridTile
-      image={itemData.item.image}
+      thumbnail={itemData.item.thumbnail}
       title={itemData.item.title}
       onSelect={() => {
         navigation.navigate({

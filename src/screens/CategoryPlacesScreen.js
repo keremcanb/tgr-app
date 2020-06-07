@@ -13,7 +13,7 @@ const PlacesScreen = ({ navigation }) => {
 
   const renderGridItem = (itemData) => (
     <CategoryGridTile
-      image={itemData.item.thumbnail}
+      thumbnail={itemData.item.thumbnail}
       title={itemData.item.title}
       onSelect={() => {
         navigation.navigate({
@@ -26,7 +26,7 @@ const PlacesScreen = ({ navigation }) => {
             placeInfo: itemData.item.info,
             placeLink: itemData.item.link,
             placeLat: itemData.item.lat,
-            placeLng: itemData.item.lng
+            placeLng: itemData.item.lng,
           },
         });
       }}

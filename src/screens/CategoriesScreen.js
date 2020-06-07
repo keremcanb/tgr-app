@@ -6,17 +6,14 @@ import useResources from '../components/useResources';
 const CategoriesScreen = ({ navigation }) => {
   const categories = useResources('categories');
   const selectedLocation = navigation.getParam('locationTitle');
-  // const displayedCategories = categories.filter(
-  //   (category) => category.location.value.indexOf(selectedLocation) >= 0
-  // );
   const displayedCategories = categories.filter((category) =>
     category.location.some((loc) => loc.value === selectedLocation)
   );
 
   const renderGridItem = (itemData) => (
     <CategoryGridTile
-      image={itemData.item.image}
       title={itemData.item.title}
+      thumbnail={itemData.item.thumbnail}
       onSelect={() => {
         navigation.navigate({
           routeName: 'CategoryPlaces',

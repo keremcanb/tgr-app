@@ -9,7 +9,7 @@ import {
   ImageBackground,
 } from 'react-native';
 
-const CategoryGridTile = ({ onSelect, image, title }) => {
+const CategoryGridTile = ({ title, thumbnail, onSelect }) => {
   let TouchableCmp = TouchableOpacity;
 
   if (Platform.OS === 'android' && Platform.Version >= 21) {
@@ -20,7 +20,7 @@ const CategoryGridTile = ({ onSelect, image, title }) => {
     <View style={styles.PlaceItem}>
       <TouchableCmp onPress={onSelect}>
         <View>
-          <ImageBackground source={{ uri: image }} style={styles.bgImage}>
+          <ImageBackground source={{ uri: thumbnail }} style={styles.bgImage}>
             <View style={styles.titleContainer}>
               <Text numberOfLines={2} style={styles.title}>
                 {title}
