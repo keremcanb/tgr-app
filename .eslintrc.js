@@ -11,7 +11,8 @@ module.exports = {
     'comma-dangle': 'off',
     'object-curly-newline': 'off',
     'no-underscore-dangle': 'off',
-    "linebreak-style": 0
+    'linebreak-style': 0,
+    'jsx-quotes': 'off',
   },
   globals: {
     fetch: false,

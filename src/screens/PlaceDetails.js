@@ -12,7 +12,7 @@ import {
 import MapView from 'react-native-maps';
 import { MarkdownView } from 'react-native-markdown-view';
 
-const PlaceDetailScreen = ({ navigation }) => {
+const PlaceDetails = ({ navigation }) => {
   const placesTitle = navigation.getParam('placeTitle');
   const placesImage = navigation.getParam('placeImage');
   const placesContent = navigation.getParam('placeContent');
@@ -94,7 +94,7 @@ const PlaceDetailScreen = ({ navigation }) => {
   );
 };
 
-PlaceDetailScreen.navigationOptions = (navData) => {
+PlaceDetails.navigationOptions = (navData) => {
   const place = navData.navigation.getParam('placeTitle');
   return {
     headerTitle: place,
@@ -176,4 +176,4 @@ const markdownStyles = {
   },
 };
 
-export default PlaceDetailScreen;
+export default PlaceDetails;

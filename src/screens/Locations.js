@@ -1,15 +1,15 @@
 import React from 'react';
 import { FlatList, View, Image, StyleSheet } from 'react-native';
-import CategoryGridTile from '../components/CategoryGridTile';
+import GridTile from '../components/GridTile';
 import useResources from '../components/useResources';
 
-const HomeScreen = ({ navigation }) => {
+const Locations = ({ navigation }) => {
   const locations = useResources('locations');
 
   const renderGridItem = (itemData) => (
-    <CategoryGridTile
-      thumbnail={itemData.item.thumbnail}
+    <GridTile
       title={itemData.item.title}
+      thumbnail={itemData.item.thumbnail}
       onSelect={() => {
         navigation.navigate({
           routeName: 'Categories',
@@ -31,7 +31,7 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-HomeScreen.navigationOptions = () => ({
+Locations.navigationOptions = () => ({
   headerTitle: 'Tayland Gezi Rehberi',
   headerLeft: (
     <View style={{ flexDirection: 'row' }}>
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default Locations;

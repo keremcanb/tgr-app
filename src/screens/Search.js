@@ -3,7 +3,7 @@ import { View, FlatList } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 
-class SearchScreen extends Component {
+class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +18,7 @@ class SearchScreen extends Component {
 
   // Fetch API
   makeRemoteRequest = () => {
-    const url = 'https://tgr-admin.appspot.com/api/places';
+    const url = 'https://tgr-admin.herokuapp.com/api/places';
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
@@ -51,7 +51,7 @@ class SearchScreen extends Component {
       round
       onChangeText={(text) => this.searchFilterFunction(text)}
       autoCorrect={false}
-      autoCapitalize="none"
+      autoCapitalize='none'
       value={this.state.value}
     />
   );
@@ -103,8 +103,8 @@ class SearchScreen extends Component {
   }
 }
 
-SearchScreen.navigationOptions = () => ({
+Search.navigationOptions = () => ({
   headerTitle: 'Ara',
 });
 
-export default SearchScreen;
+export default Search;

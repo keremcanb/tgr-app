@@ -1,9 +1,9 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import CategoryGridTile from '../components/CategoryGridTile';
+import GridTile from '../components/GridTile';
 import useResources from '../components/useResources';
 
-const CategoriesScreen = ({ navigation }) => {
+const Categories = ({ navigation }) => {
   const categories = useResources('categories');
   const selectedLocation = navigation.getParam('locationTitle');
   const displayedCategories = categories.filter((category) =>
@@ -11,7 +11,7 @@ const CategoriesScreen = ({ navigation }) => {
   );
 
   const renderGridItem = (itemData) => (
-    <CategoryGridTile
+    <GridTile
       title={itemData.item.title}
       thumbnail={itemData.item.thumbnail}
       onSelect={() => {
@@ -36,7 +36,7 @@ const CategoriesScreen = ({ navigation }) => {
   );
 };
 
-CategoriesScreen.navigationOptions = (navData) => {
+Categories.navigationOptions = (navData) => {
   const locationTitle = navData.navigation.getParam('locationTitle');
 
   return {
@@ -44,4 +44,4 @@ CategoriesScreen.navigationOptions = (navData) => {
   };
 };
 
-export default CategoriesScreen;
+export default Categories;

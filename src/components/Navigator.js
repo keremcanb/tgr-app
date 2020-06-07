@@ -6,13 +6,13 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-import HomeScreen from '../screens/HomeScreen';
-import CategoriesScreen from '../screens/CategoriesScreen';
-import CategoryPlacesScreen from '../screens/CategoryPlacesScreen';
-import PlaceDetailScreen from '../screens/PlaceDetailScreen';
-import SearchScreen from '../screens/SearchScreen';
-import SearchResultScreen from '../screens/SearchResultScreen';
-import InfoScreen from '../screens/InfoScreen';
+import Locations from '../screens/Locations';
+import Categories from '../screens/Categories';
+import Places from '../screens/Places';
+import PlaceDetails from '../screens/PlaceDetails';
+import Search from '../screens/Search';
+import SearchResults from '../screens/SearchResults';
+import AppInfo from '../screens/AppInfo';
 // import FavoritesScreen from '../screens/FavoritesScreen'
 
 // Default stack options
@@ -31,28 +31,28 @@ const defaultStackNavOptions = {
 };
 
 // Main navigator
-const PlacesNavigator = createStackNavigator(
+const Navigator = createStackNavigator(
   {
     Home: {
-      screen: HomeScreen,
+      screen: Locations,
     },
     Categories: {
-      screen: CategoriesScreen,
+      screen: Categories,
     },
     CategoryPlaces: {
-      screen: CategoryPlacesScreen,
+      screen: Places,
     },
     PlaceDetail: {
-      screen: PlaceDetailScreen,
+      screen: PlaceDetails,
     },
     Search: {
-      screen: SearchScreen,
+      screen: Search,
     },
     SearchResult: {
-      screen: SearchResultScreen,
+      screen: SearchResults,
     },
     Info: {
-      screen: InfoScreen,
+      screen: AppInfo,
     },
   },
   {
@@ -63,7 +63,7 @@ const PlacesNavigator = createStackNavigator(
 // Search navigator
 const SearchNavigator = createStackNavigator(
   {
-    Search: SearchScreen,
+    Search,
   },
   {
     defaultNavigationOptions: defaultStackNavOptions,
@@ -73,7 +73,7 @@ const SearchNavigator = createStackNavigator(
 // Info navigator
 const InfoNavigator = createStackNavigator(
   {
-    Info: InfoScreen,
+    Info: AppInfo,
   },
   {
     defaultNavigationOptions: defaultStackNavOptions,
@@ -93,10 +93,10 @@ const InfoNavigator = createStackNavigator(
 // Bottom tab navigator
 const tabScreenConfig = {
   Places: {
-    screen: PlacesNavigator,
+    screen: Navigator,
     navigationOptions: {
       tabBarIcon: (tabInfo) => (
-        <Ionicons name="ios-home" size={25} color={tabInfo.tintColor} />
+        <Ionicons name='ios-home' size={25} color={tabInfo.tintColor} />
       ),
       tabBarColor: '#2a1a73',
     },
@@ -105,7 +105,7 @@ const tabScreenConfig = {
     screen: SearchNavigator,
     navigationOptions: {
       tabBarIcon: (tabInfo) => (
-        <Ionicons name="ios-search" size={25} color={tabInfo.tintColor} />
+        <Ionicons name='ios-search' size={25} color={tabInfo.tintColor} />
       ),
       tabBarColor: '#2a1a73',
     },
@@ -115,7 +115,7 @@ const tabScreenConfig = {
     navigationOptions: {
       tabBarIcon: (tabInfo) => (
         <Ionicons
-          name="ios-information-circle-outline"
+          name='ios-information-circle-outline'
           size={25}
           color={tabInfo.tintColor}
         />

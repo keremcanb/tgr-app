@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import PlacesNavigator from './src/components/PlacesNavigator';
+import Navigator from './src/components/Navigator';
 // import { enableScreens } from 'react-native-screens';
 
 // enableScreens();
@@ -23,5 +23,5 @@ export default function App() {
     );
   }
 
-  return <PlacesNavigator />;
+  return <Navigator />;
 }

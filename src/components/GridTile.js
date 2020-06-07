@@ -9,7 +9,7 @@ import {
   ImageBackground,
 } from 'react-native';
 
-const CategoryGridTile = ({ title, thumbnail, onSelect }) => {
+const GridTile = ({ title, thumbnail, onSelect }) => {
   let TouchableCmp = TouchableOpacity;
 
   if (Platform.OS === 'android' && Platform.Version >= 21) {
@@ -17,7 +17,7 @@ const CategoryGridTile = ({ title, thumbnail, onSelect }) => {
   }
 
   return (
-    <View style={styles.PlaceItem}>
+    <View style={styles.placeItem}>
       <TouchableCmp onPress={onSelect}>
         <View>
           <ImageBackground source={{ uri: thumbnail }} style={styles.bgImage}>
@@ -34,7 +34,7 @@ const CategoryGridTile = ({ title, thumbnail, onSelect }) => {
 };
 
 const styles = StyleSheet.create({
-  PlaceItem: {
+  placeItem: {
     flex: 1 / 2,
     height: 150,
     width: '100%',
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CategoryGridTile;
+export default GridTile;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import CategoryGridTile from '../components/CategoryGridTile';
+import GridTile from '../components/GridTile';
 import useResources from '../components/useResources';
 
 const PlacesScreen = ({ navigation }) => {
@@ -12,7 +12,7 @@ const PlacesScreen = ({ navigation }) => {
   );
 
   const renderGridItem = (itemData) => (
-    <CategoryGridTile
+    <GridTile
       thumbnail={itemData.item.thumbnail}
       title={itemData.item.title}
       onSelect={() => {
