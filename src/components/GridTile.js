@@ -17,7 +17,7 @@ const GridTile = ({ title, thumbnail, onSelect }) => {
   }
 
   return (
-    <View style={styles.placeItem}>
+    <View style={styles.mainContainer}>
       <TouchableCmp onPress={onSelect}>
         <View>
           <ImageBackground source={{ uri: thumbnail }} style={styles.bgImage}>
@@ -34,7 +34,7 @@ const GridTile = ({ title, thumbnail, onSelect }) => {
 };
 
 const styles = StyleSheet.create({
-  placeItem: {
+  mainContainer: {
     flex: 1 / 2,
     height: 150,
     width: '100%',
