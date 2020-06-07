@@ -8,7 +8,7 @@ const PlacesScreen = ({ navigation }) => {
   const categories = navigation.getParam('categoryTitle');
   const locations = navigation.getParam('locationTitle');
   const displayedPlaces = places.filter(
-    (item) => item.category === categories && item.location === locations
+    (place) => place.category === categories && place.location === locations
   );
 
   const renderGridItem = (itemData) => (

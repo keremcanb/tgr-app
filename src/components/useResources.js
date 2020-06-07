@@ -6,7 +6,8 @@ const useResources = (resource) => {
 
   const fetchResource = async () => {
     const response = await axios.get(
-      `https://tgr-admin.appspot.com/api/${resource}`
+      `https://tgr-admin.herokuapp.com/api/${resource}`
+      // `http://192.168.2.94:3001/api/${resource}`
     );
     setResources(response.data);
   };

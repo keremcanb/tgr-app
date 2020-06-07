@@ -20,7 +20,6 @@ const PlaceDetailScreen = ({ navigation }) => {
   const placesLink = navigation.getParam('placeLink');
   const placesLat = navigation.getParam('placeLat');
   const placesLng = navigation.getParam('placeLng');
-
   const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
   const latLng = `${placesLat},${placesLng}`;
   const label = 'Custom Label';
@@ -28,29 +27,25 @@ const PlaceDetailScreen = ({ navigation }) => {
     ios: `${scheme}${label}@${latLng}`,
     android: `${scheme}${latLng}(${label})`,
   });
-
   const bookingUrl = `${placesLink}`;
 
   return (
     <ScrollView>
       <Image source={{ uri: placesImage }} style={styles.image} />
-
       <View>
         {!!placesLink && (
           <View style={styles.buttonTop}>
             <Button
-              title="REZERVASYON"
-              color="#2a1a73"
+              title='REZERVASYON'
+              color='#2a1a73'
               onPress={() => Linking.openURL(bookingUrl)}
             />
           </View>
         )}
       </View>
-
       <View style={styles.container}>
         <MarkdownView styles={markdownStyles}>{placesContent}</MarkdownView>
       </View>
-
       <View>
         {!!placesInfo && (
           <>
@@ -60,19 +55,17 @@ const PlaceDetailScreen = ({ navigation }) => {
           </>
         )}
       </View>
-
       <View>
         {!!placesLink && (
           <View style={styles.buttonBottom}>
             <Button
-              title="REZERVASYON"
-              color="#2a1a73"
+              title='REZERVASYON'
+              color='#2a1a73'
               onPress={() => Linking.openURL(bookingUrl)}
             />
           </View>
         )}
       </View>
-
       <View>
         {!!placesLat && !!placesLat && (
           <>
@@ -97,14 +90,12 @@ const PlaceDetailScreen = ({ navigation }) => {
           </>
         )}
       </View>
-
     </ScrollView>
   );
 };
 
 PlaceDetailScreen.navigationOptions = (navData) => {
   const place = navData.navigation.getParam('placeTitle');
-
   return {
     headerTitle: place,
   };
