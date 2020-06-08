@@ -1,5 +1,12 @@
 import React from 'react';
-import { FlatList, View, Image, StyleSheet } from 'react-native';
+import {
+  FlatList,
+  View,
+  Image,
+  StyleSheet,
+  ActivityIndicator,
+  Text,
+} from 'react-native';
 import GridTile from '../components/GridTile';
 import useResources from '../components/useResources';
 
@@ -22,12 +29,21 @@ const Locations = ({ navigation }) => {
   );
 
   return (
-    <FlatList
-      data={locations}
-      renderItem={renderGridItem}
-      numColumns={2}
-      keyExtractor={(item) => item._id}
-    />
+    <>
+      {locations.length > 0 ? (
+        <FlatList
+          data={locations}
+          renderItem={renderGridItem}
+          numColumns={2}
+          keyExtractor={(item) => item._id}
+        />
+      ) : (
+        <View style={[styles.container]}>
+          <ActivityIndicator size='large' color='#0000ff' />
+          <Text style={[styles.text]}>Yükleniyor...</Text>
+        </View>
+      )}
+    </>
   );
 };
 
@@ -41,6 +57,16 @@ Locations.navigationOptions = () => ({
 });
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
   icon: {
     width: 40,
     height: 40,
