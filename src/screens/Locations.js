@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   FlatList,
   View,
@@ -8,10 +9,19 @@ import {
   Text,
 } from 'react-native';
 import GridTile from '../components/GridTile';
-import useResources from '../components/useResources';
 
 const Locations = ({ navigation }) => {
-  const locations = useResources('locations');
+  const [locations, setLocations] = useState([]);
+
+  useEffect(() => {
+    const getLocations = async () => {
+      const result = await axios.get(
+        'https://tgr-admin.herokuapp.com/api/locations'
+      );
+      setLocations(result.data);
+    };
+    getLocations();
+  }, []);
 
   const renderGridItem = (itemData) => (
     <GridTile

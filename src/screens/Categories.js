@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { FlatList } from 'react-native';
 import GridTile from '../components/GridTile';
-import useResources from '../components/useResources';
 
 const Categories = ({ navigation }) => {
-  const categories = useResources('categories');
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const result = await axios.get(
+        'https://tgr-admin.herokuapp.com/api/categories'
+      );
+      setCategories(result.data);
+    };
+    getCategories();
+  }, []);
+
   const selectedLocation = navigation.getParam('locationTitle');
   const displayedCategories = categories.filter((category) =>
     category.location.some((loc) => loc.value === selectedLocation)

@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { FlatList } from 'react-native';
 import GridTile from '../components/GridTile';
-import useResources from '../components/useResources';
 
 const PlacesScreen = ({ navigation }) => {
-  const places = useResources('places');
+  const [places, setPlaces] = useState([]);
+
+  useEffect(() => {
+    const getPlaces = async () => {
+      const result = await axios.get(
+        'https://tgr-admin.herokuapp.com/api/places'
+      );
+      setPlaces(result.data);
+    };
+    getPlaces();
+  }, []);
+
   const categories = navigation.getParam('categoryTitle');
   const locations = navigation.getParam('locationTitle');
   const displayedPlaces = places.filter(
