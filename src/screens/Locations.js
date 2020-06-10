@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import {
   FlatList,
   View,
@@ -9,29 +8,20 @@ import {
   Text,
 } from 'react-native';
 import GridTile from '../components/GridTile';
+import useResources from '../components/useResources';
 
 const Locations = ({ navigation }) => {
-  const [locations, setLocations] = useState([]);
+  const locations = useResources('locations');
 
-  useEffect(() => {
-    const getLocations = async () => {
-      const result = await axios.get(
-        'https://tgr-admin.herokuapp.com/api/locations'
-      );
-      setLocations(result.data);
-    };
-    getLocations();
-  }, []);
-
-  const renderGridItem = (itemData) => (
+  const renderItem = (items) => (
     <GridTile
-      title={itemData.item.title}
-      thumbnail={itemData.item.thumbnail}
+      title={items.item.title}
+      thumbnail={items.item.thumbnail}
       onSelect={() => {
         navigation.navigate({
           routeName: 'Categories',
           params: {
-            locationTitle: itemData.item.title,
+            locationTitle: items.item.title,
           },
         });
       }}
@@ -43,7 +33,7 @@ const Locations = ({ navigation }) => {
       {locations.length > 0 ? (
         <FlatList
           data={locations}
-          renderItem={renderGridItem}
+          renderItem={renderItem}
           numColumns={2}
           keyExtractor={(item) => item._id}
         />
@@ -76,6 +66,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 18,
+    marginTop: 2,
   },
   icon: {
     width: 40,

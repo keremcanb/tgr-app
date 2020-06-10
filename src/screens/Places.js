@@ -1,43 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { FlatList } from 'react-native';
 import GridTile from '../components/GridTile';
+import useResources from '../components/useResources';
 
 const PlacesScreen = ({ navigation }) => {
-  const [places, setPlaces] = useState([]);
-
-  useEffect(() => {
-    const getPlaces = async () => {
-      const result = await axios.get(
-        'https://tgr-admin.herokuapp.com/api/places'
-      );
-      setPlaces(result.data);
-    };
-    getPlaces();
-  }, []);
-
+  const places = useResources('places');
   const categories = navigation.getParam('categoryTitle');
   const locations = navigation.getParam('locationTitle');
-  const displayedPlaces = places.filter(
+  const selectedPlace = places.filter(
     (place) => place.category === categories && place.location === locations
   );
 
-  const renderGridItem = (itemData) => (
+  const renderItem = (items) => (
     <GridTile
-      thumbnail={itemData.item.thumbnail}
-      title={itemData.item.title}
+      thumbnail={items.item.thumbnail}
+      title={items.item.title}
       onSelect={() => {
         navigation.navigate({
           routeName: 'PlaceDetail',
           params: {
-            placeId: itemData.item._id,
-            placeTitle: itemData.item.title,
-            placeImage: itemData.item.image,
-            placeContent: itemData.item.content,
-            placeInfo: itemData.item.info,
-            placeLink: itemData.item.link,
-            placeLat: itemData.item.lat,
-            placeLng: itemData.item.lng,
+            placeId: items.item._id,
+            placeTitle: items.item.title,
+            placeImage: items.item.image,
+            placeContent: items.item.content,
+            placeInfo: items.item.info,
+            placeLink: items.item.link,
+            placeLat: items.item.lat,
+            placeLng: items.item.lng,
           },
         });
       }}
@@ -46,8 +35,8 @@ const PlacesScreen = ({ navigation }) => {
 
   return (
     <FlatList
-      data={displayedPlaces}
-      renderItem={renderGridItem}
+      data={selectedPlace}
+      renderItem={renderItem}
       numColumns={2}
       keyExtractor={(item) => item._id}
     />

@@ -1,35 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { FlatList } from 'react-native';
 import GridTile from '../components/GridTile';
+import useResources from '../components/useResources';
 
 const Categories = ({ navigation }) => {
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    const getCategories = async () => {
-      const result = await axios.get(
-        'https://tgr-admin.herokuapp.com/api/categories'
-      );
-      setCategories(result.data);
-    };
-    getCategories();
-  }, []);
-
+  const categories = useResources('categories');
   const selectedLocation = navigation.getParam('locationTitle');
-  const displayedCategories = categories.filter((category) =>
-    category.location.some((loc) => loc.value === selectedLocation)
+  const selectedCategory = categories.filter((cat) =>
+    cat.location.some((loc) => loc.value === selectedLocation)
   );
 
-  const renderGridItem = (itemData) => (
+  const renderItem = (items) => (
     <GridTile
-      title={itemData.item.title}
-      thumbnail={itemData.item.thumbnail}
+      title={items.item.title}
+      thumbnail={items.item.thumbnail}
       onSelect={() => {
         navigation.navigate({
           routeName: 'CategoryPlaces',
           params: {
-            categoryTitle: itemData.item.title,
+            categoryTitle: items.item.title,
             locationTitle: selectedLocation,
           },
         });
@@ -39,8 +28,8 @@ const Categories = ({ navigation }) => {
 
   return (
     <FlatList
-      data={displayedCategories}
-      renderItem={renderGridItem}
+      data={selectedCategory}
+      renderItem={renderItem}
       numColumns={2}
       keyExtractor={(item) => item._id}
     />
@@ -49,7 +38,6 @@ const Categories = ({ navigation }) => {
 
 Categories.navigationOptions = (navData) => {
   const locationTitle = navData.navigation.getParam('locationTitle');
-
   return {
     headerTitle: locationTitle,
   };
