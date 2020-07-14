@@ -1,6 +1,6 @@
 {
   "urlRandomness": "9r-b2r",
-  "hostType": "lan",
+  "hostType": "localhost",
   "lanType": "ip",
   "dev": true,
   "minify": false,
