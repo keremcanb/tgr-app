@@ -13,6 +13,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'linebreak-style': 0,
     'jsx-quotes': 'off',
+    'global-require': 'off',
   },
   globals: {
     fetch: false,

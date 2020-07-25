@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import { enableScreens } from 'react-native-screens';
 import Navigator from './src/components/Navigator';
-// import { enableScreens } from 'react-native-screens';
 
-// enableScreens();
+enableScreens();
 
 const fetchFonts = () => Font.loadAsync({
   'nunito-bold': require('./src/assets/fonts/Nunito-Bold.ttf'),
@@ -14,14 +14,9 @@ const fetchFonts = () => Font.loadAsync({
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
 
-  if (!fontLoaded) {
-    return (
-      <AppLoading
-        startAsync={fetchFonts}
-        onFinish={() => setFontLoaded(true)}
-      />
-    );
-  }
-
-  return <Navigator />;
+  return !fontLoaded ? (
+    <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} />
+  ) : (
+    <Navigator />
+  );
 }
