@@ -18,7 +18,7 @@ class Search extends Component {
 
   // Fetch API
   makeRemoteRequest = () => {
-    const url = 'https://tgr-admin.herokuapp.com/api/places';
+    const url = 'https://tgradmin.herokuapp.com/api/places';
     fetch(url)
       .then((res) => res.json())
       .then((res) => {

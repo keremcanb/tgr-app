@@ -5,7 +5,9 @@ import useResources from '../components/useResources';
 
 const Categories = ({ navigation }) => {
   const categories = useResources('categories');
+
   const selectedLocation = navigation.getParam('locationTitle');
+
   const selectedCategory = categories.filter((cat) =>
     cat.location.some((loc) => loc.value === selectedLocation)
   );
@@ -15,12 +17,9 @@ const Categories = ({ navigation }) => {
       title={items.item.title}
       thumbnail={items.item.thumbnail}
       onSelect={() => {
-        navigation.navigate({
-          routeName: 'CategoryPlaces',
-          params: {
-            categoryTitle: items.item.title,
-            locationTitle: selectedLocation,
-          },
+        navigation.navigate('CategoryPlaces', {
+          categoryTitle: items.item.title,
+          locationTitle: selectedLocation,
         });
       }}
     />

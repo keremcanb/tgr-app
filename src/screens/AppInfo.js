@@ -33,9 +33,11 @@ const AppInfo = () => (
         Gezi Rehberi e-kitabını indirebilirsiniz.
       </Text>
       <TouchableOpacity
-        onPress={() => Linking.openURL(
-          'https://play.google.com/store/books/details/Keremcan_B%C3%BCy%C3%BCkta%C5%9Fk%C4%B1n_Tayland_Gezi_Rehberi?id=eK10BgAAQBAJ'
-        )}
+        onPress={() =>
+          Linking.openURL(
+            'https://play.google.com/store/books/details/Keremcan_B%C3%BCy%C3%BCkta%C5%9Fk%C4%B1n_Tayland_Gezi_Rehberi?id=eK10BgAAQBAJ'
+          )
+        }
       >
         <Image
           style={styles.image}

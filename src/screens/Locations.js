@@ -18,11 +18,8 @@ const Locations = ({ navigation }) => {
       title={items.item.title}
       thumbnail={items.item.thumbnail}
       onSelect={() => {
-        navigation.navigate({
-          routeName: 'Categories',
-          params: {
-            locationTitle: items.item.title,
-          },
+        navigation.navigate('Categories', {
+          locationTitle: items.item.title,
         });
       }}
     />

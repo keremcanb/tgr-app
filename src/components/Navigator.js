@@ -137,19 +137,20 @@ const tabScreenConfig = {
 };
 
 // Tab navigator options
-const PlacesFavTabNavigator = Platform.OS === 'android'
-  ? createMaterialBottomTabNavigator(tabScreenConfig, {
-    activeTintColor: 'white',
-    shifting: true,
-    labeled: false,
-    barStyle: {
-      backgroundColor: '#2a1a73',
-    },
-  })
-  : createBottomTabNavigator(tabScreenConfig, {
-    tabBarOptions: {
-      activeTintColor: '#ff6f00',
-    },
-  });
+const PlacesFavTabNavigator =
+  Platform.OS === 'android'
+    ? createMaterialBottomTabNavigator(tabScreenConfig, {
+        activeTintColor: 'white',
+        shifting: true,
+        labeled: false,
+        barStyle: {
+          backgroundColor: '#2a1a73',
+        },
+      })
+    : createBottomTabNavigator(tabScreenConfig, {
+        tabBarOptions: {
+          activeTintColor: '#ff6f00',
+        },
+      });
 
 export default createAppContainer(PlacesFavTabNavigator);
