@@ -15,9 +15,9 @@ const fetchFonts = () =>
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
 
-  return !fontLoaded ? (
-    <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} />
-  ) : (
+  return fontLoaded ? (
     <Navigator />
+  ) : (
+    <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} />
   );
 }

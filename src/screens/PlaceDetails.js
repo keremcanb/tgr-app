@@ -27,12 +27,12 @@ const PlaceDetails = ({ navigation }) => {
 
   const label = 'Custom Label';
 
+  const bookingUrl = `${placesLink}`;
+
   const url = Platform.select({
     ios: `${scheme}${label}@${latLng}`,
     android: `${scheme}${latLng}(${label})`,
   });
-
-  const bookingUrl = `${placesLink}`;
 
   return (
     <ScrollView>

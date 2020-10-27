@@ -10,7 +10,7 @@ const PlacesScreen = ({ navigation }) => {
   const locations = navigation.getParam('locationTitle');
 
   const selectedPlace = places.filter(
-    (place) => place.category === categories && place.location === locations
+    (plc) => plc.category === categories && plc.location === locations
   );
 
   const renderItem = (items) => (

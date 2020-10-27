@@ -27,7 +27,7 @@ const Locations = ({ navigation }) => {
 
   return (
     <>
-      {locations.length > 0 ? (
+      {locations ? (
         <FlatList
           data={locations}
           renderItem={renderItem}
