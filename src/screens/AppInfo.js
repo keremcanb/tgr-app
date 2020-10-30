@@ -17,21 +17,25 @@ const AppInfo = () => (
         kaynak olma özelliğini koruyan taylandgezi.com sitesindeki bilgilerden
         derlenmiştir.
       </Text>
+
       <TouchableOpacity
         onPress={() => Linking.openURL('http://www.taylandgezi.com')}
       >
-        <Image
-          style={styles.logo}
-          source={{
-            uri:
-              'http://www.taylandgezi.com/wp-content/uploads/2016/01/tayland-gezi-rehberi-l.gif',
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
-        />
+        >
+          <Image source={require('../assets/tgr-logo.gif')} />
+        </View>
       </TouchableOpacity>
+
       <Text style={styles.container}>
         Daha fazla ve ayrıntılı bilgiler için Google Play Books&apos;tan Tayland
         Gezi Rehberi e-kitabını indirebilirsiniz.
       </Text>
+
       <TouchableOpacity
         onPress={() =>
           Linking.openURL(
@@ -39,17 +43,20 @@ const AppInfo = () => (
           )
         }
       >
-        <Image
-          style={styles.image}
-          source={{
-            uri:
-              'https://books.google.com/books/content/images/frontcover/eK10BgAAQBAJ?fife=w200-h300',
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
-        />
+        >
+          <Image source={require('../assets/tgr-book.jpg')} />
+        </View>
       </TouchableOpacity>
+
       <Text style={styles.container}>© 2020 Keremcan Büyüktaşkın</Text>
+
       <Text style={styles.container}>
-        Yazar, bilgilerin güncelliği, doğrululuğu & eksiksizliği hakkında hiçbir
+        Yazar, bilgilerin güncelliği, doğruluğu & eksiksizliği hakkında hiçbir
         garanti vermemektedir. Bilgilerin kullanımından kaynaklanabilecek bir
         zarardan yazar sorumlu tutulamaz. Metinler & görseller üzerindeki tüm
         maddi ve manevi haklar, 5846 sayılı Fikir ve Sanat Eserleri Kanunu’na
@@ -58,6 +65,7 @@ const AppInfo = () => (
         işlenemez, değiştirilemez, başka internet sitelerinde ve basılı yada
         görsel yayın yapan diğer mecralarda yayınlanamaz.
       </Text>
+
       <Text style={styles.container}>
         Kullanım hakkı yazara ait olmayan açık kullanımlı fotoğraflar Wikimedia
         Commons kaynaklı & CC BY-SA lisanslı, haritalar ise OpenStreetMap
@@ -77,20 +85,6 @@ const styles = StyleSheet.create({
     fontFamily: 'nunito-light',
     marginBottom: 5,
     textAlign: 'center',
-  },
-  image: {
-    marginLeft: 100,
-    marginRight: 100,
-    width: 150,
-    height: 200,
-    marginBottom: 20,
-  },
-  logo: {
-    marginLeft: 100,
-    marginRight: 100,
-    width: 170,
-    height: 80,
-    marginBottom: 5,
   },
 });
 
