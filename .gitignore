@@ -1,6 +1,5 @@
 node_modules/
-/api-9049425466032141879-471808-d24af2581786.json
 /env.js
 /app.json
-.expo/packager-info.json
-.expo/settings.json
+.expo/
+/tgr.jks

@@ -13,24 +13,22 @@ import useResources from '../components/useResources';
 const Locations = ({ navigation }) => {
   const locations = useResources('locations');
 
-  const renderItem = (items) => (
-    <GridTile
-      title={items.item.title}
-      thumbnail={items.item.thumbnail}
-      onSelect={() => {
-        navigation.navigate('Categories', {
-          locationTitle: items.item.title,
-        });
-      }}
-    />
-  );
-
   return (
     <>
       {locations.length > 0 ? (
         <FlatList
+          renderItem={(items) => (
+            <GridTile
+              title={items.item.title}
+              thumbnail={items.item.thumbnail}
+              onSelect={() => {
+                navigation.navigate('Categories', {
+                  locationTitle: items.item.title,
+                });
+              }}
+            />
+          )}
           data={locations}
-          renderItem={renderItem}
           numColumns={2}
           keyExtractor={(item) => item._id}
         />
