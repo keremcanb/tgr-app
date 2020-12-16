@@ -12,23 +12,21 @@ const Categories = ({ navigation }) => {
     cat.location.some((loc) => loc.value === selectedLocation)
   );
 
-  const renderItem = (items) => (
-    <GridTile
-      title={items.item.title}
-      thumbnail={items.item.thumbnail}
-      onSelect={() => {
-        navigation.navigate('CategoryPlaces', {
-          categoryTitle: items.item.title,
-          locationTitle: selectedLocation,
-        });
-      }}
-    />
-  );
-
   return (
     <FlatList
+      renderItem={(itemData) => (
+        <GridTile
+          title={itemData.item.title}
+          thumbnail={itemData.item.thumbnail}
+          onSelect={() => {
+            navigation.navigate('CategoryPlaces', {
+              categoryTitle: itemData.item.title,
+              locationTitle: selectedLocation,
+            });
+          }}
+        />
+      )}
       data={selectedCategory}
-      renderItem={renderItem}
       numColumns={2}
       keyExtractor={(item) => item._id}
     />

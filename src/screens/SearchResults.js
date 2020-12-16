@@ -78,7 +78,6 @@ const PlaceDetails = ({ navigation }) => {
 
 PlaceDetails.navigationOptions = (navData) => {
   const place = navData.navigation.getParam('placeTitle');
-
   return {
     headerTitle: place,
   };

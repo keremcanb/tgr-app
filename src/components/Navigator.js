@@ -80,16 +80,6 @@ const InfoNavigator = createStackNavigator(
   }
 );
 
-// Favorites navigator
-// const FavNavigator = createStackNavigator(
-//   {
-//     Favorites: FavoritesScreen
-//   },
-//   {
-//     defaultNavigationOptions: defaultStackNavOptions
-//   }
-// )
-
 // Bottom tab navigator
 const tabScreenConfig = {
   Places: {
@@ -123,17 +113,6 @@ const tabScreenConfig = {
       tabBarColor: '#2a1a73',
     },
   },
-  // Favorites: {
-  //   screen: FavNavigator,
-  //   navigationOptions: {
-  //     tabBarIcon: tabInfo => {
-  //       return (
-  //         <Ionicons name='ios-bookmark' size={25} color={tabInfo.tintColor} />
-  //       )
-  //     },
-  //     tabBarColor: '#2a1a73'
-  //   }
-  // }
 };
 
 // Tab navigator options

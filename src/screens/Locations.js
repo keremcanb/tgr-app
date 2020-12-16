@@ -17,13 +17,13 @@ const Locations = ({ navigation }) => {
     <>
       {locations.length > 0 ? (
         <FlatList
-          renderItem={(items) => (
+          renderItem={(itemData) => (
             <GridTile
-              title={items.item.title}
-              thumbnail={items.item.thumbnail}
+              title={itemData.item.title}
+              thumbnail={itemData.item.thumbnail}
               onSelect={() => {
                 navigation.navigate('Categories', {
-                  locationTitle: items.item.title,
+                  locationTitle: itemData.item.title,
                 });
               }}
             />

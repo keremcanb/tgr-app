@@ -13,29 +13,27 @@ const PlacesScreen = ({ navigation }) => {
     (plc) => plc.category === categories && plc.location === locations
   );
 
-  const renderItem = (items) => (
-    <GridTile
-      thumbnail={items.item.thumbnail}
-      title={items.item.title}
-      onSelect={() => {
-        navigation.navigate('PlaceDetail', {
-          placeId: items.item._id,
-          placeTitle: items.item.title,
-          placeImage: items.item.image,
-          placeContent: items.item.content,
-          placeInfo: items.item.info,
-          placeLink: items.item.link,
-          placeLat: items.item.lat,
-          placeLng: items.item.lng,
-        });
-      }}
-    />
-  );
-
   return (
     <FlatList
       data={selectedPlace}
-      renderItem={renderItem}
+      renderItem={(itemData) => (
+        <GridTile
+          thumbnail={itemData.item.thumbnail}
+          title={itemData.item.title}
+          onSelect={() => {
+            navigation.navigate('PlaceDetail', {
+              placeId: itemData.item._id,
+              placeTitle: itemData.item.title,
+              placeImage: itemData.item.image,
+              placeContent: itemData.item.content,
+              placeInfo: itemData.item.info,
+              placeLink: itemData.item.link,
+              placeLat: itemData.item.lat,
+              placeLng: itemData.item.lng,
+            });
+          }}
+        />
+      )}
       numColumns={2}
       keyExtractor={(item) => item._id}
     />
