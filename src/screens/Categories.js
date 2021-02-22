@@ -8,9 +8,7 @@ const Categories = ({ navigation }) => {
 
   const selectedLocation = navigation.getParam('locationTitle');
 
-  const selectedCategory = categories.filter((cat) =>
-    cat.location.some((loc) => loc.value === selectedLocation)
-  );
+  const selectedCategory = categories.filter((cat) => cat.location.some((loc) => loc.value === selectedLocation));
 
   return (
     <FlatList
@@ -21,7 +19,7 @@ const Categories = ({ navigation }) => {
           onSelect={() => {
             navigation.navigate('CategoryPlaces', {
               categoryTitle: itemData.item.title,
-              locationTitle: selectedLocation,
+              locationTitle: selectedLocation
             });
           }}
         />
@@ -36,7 +34,7 @@ const Categories = ({ navigation }) => {
 Categories.navigationOptions = (navData) => {
   const locationTitle = navData.navigation.getParam('locationTitle');
   return {
-    headerTitle: locationTitle,
+    headerTitle: locationTitle
   };
 };
 

@@ -1,10 +1,16 @@
 {
   "main": "node_modules/expo/AppEntry.js",
+  "private": true,
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "wesbos"
+    ]
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
@@ -15,7 +21,7 @@
     "expo-font": "~8.4.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.0.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
     "react-native-config": "^0.12.0",
     "react-native-elements": "^2.0.4",
     "react-native-gesture-handler": "~1.8.0",
@@ -24,7 +30,7 @@
     "react-native-paper": "^3.11.0",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
-    "react-native-screens": "~2.15.0",
+    "react-native-screens": "~2.15.2",
     "react-native-touchable-scale": "^2.1.0",
     "react-navigation": "^4.4.0",
     "react-navigation-header-buttons": "^3.0.5",
@@ -34,13 +40,16 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "babel-preset-expo": "8.3.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.8.1",
     "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-wesbos": "^1.0.1",
+    "eslint-plugin-html": "^6.1.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-native-a11y": "^2.0.1"
-  },
-  "private": true
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "prettier": "^2.1.1"
+  }
 }

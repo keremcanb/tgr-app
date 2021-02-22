@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Platform,
   TouchableNativeFeedback,
-  ImageBackground,
+  ImageBackground
 } from 'react-native';
 
 const GridTile = ({ title, thumbnail, onSelect }) => {
@@ -38,24 +38,24 @@ const styles = StyleSheet.create({
     flex: 1 / 2,
     height: 150,
     width: '100%',
-    margin: 1,
+    margin: 1
   },
   bgImage: {
     width: '100%',
     height: '100%',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-end'
   },
   titleContainer: {
     backgroundColor: 'rgba(0,0,0,0.5)',
     paddingVertical: 3,
-    paddingHorizontal: 12,
+    paddingHorizontal: 12
   },
   title: {
     fontFamily: 'nunito-light',
     fontSize: 21,
     color: '#fff',
-    textAlign: 'center',
-  },
+    textAlign: 'center'
+  }
 });
 
 export default GridTile;

@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { View, FlatList } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
@@ -7,7 +8,7 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      data: []
     };
     this.arrayholder = [];
   }
@@ -23,7 +24,7 @@ class Search extends Component {
       .then((res) => res.json())
       .then((res) => {
         this.setState({
-          data: [],
+          data: []
         });
         this.arrayholder = res;
       });
@@ -32,7 +33,7 @@ class Search extends Component {
   // Search Filter Function
   searchFilterFunction = (text) => {
     this.setState({
-      value: text,
+      value: text
     });
     const newData = this.arrayholder.filter((item) => {
       const itemData = `${item.title.toUpperCase()}`;
@@ -40,7 +41,7 @@ class Search extends Component {
       return itemData.indexOf(textData) > -1;
     });
     this.setState({
-      data: newData,
+      data: newData
     });
   };
 
@@ -51,7 +52,7 @@ class Search extends Component {
       round
       onChangeText={(text) => this.searchFilterFunction(text)}
       autoCorrect={false}
-      autoCapitalize='none'
+      autoCapitalize="none"
       value={this.state.value}
     />
   );
@@ -72,7 +73,7 @@ class Search extends Component {
               linearGradientProps={{
                 colors: ['#072d70', '#2661c7'],
                 start: [1, 0],
-                end: [0.2, 0],
+                end: [0.2, 0]
               }}
               // leftAvatar={{ source: { uri: item.thumbnail } }}
               title={item.title}
@@ -89,8 +90,8 @@ class Search extends Component {
                     placeContent: item.content,
                     placeInfo: item.info,
                     placeLat: item.lat,
-                    placeLng: item.lng,
-                  },
+                    placeLng: item.lng
+                  }
                 });
               }}
             />
@@ -104,7 +105,7 @@ class Search extends Component {
 }
 
 Search.navigationOptions = () => ({
-  headerTitle: 'Ara',
+  headerTitle: 'Ara'
 });
 
 export default Search;

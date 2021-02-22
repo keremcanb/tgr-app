@@ -9,9 +9,7 @@ const PlacesScreen = ({ navigation }) => {
   const categories = navigation.getParam('categoryTitle');
   const locations = navigation.getParam('locationTitle');
 
-  const selectedPlace = places.filter(
-    (plc) => plc.category === categories && plc.location === locations
-  );
+  const selectedPlace = places.filter((plc) => plc.category === categories && plc.location === locations);
 
   return (
     <FlatList
@@ -29,7 +27,7 @@ const PlacesScreen = ({ navigation }) => {
               placeInfo: itemData.item.info,
               placeLink: itemData.item.link,
               placeLat: itemData.item.lat,
-              placeLng: itemData.item.lng,
+              placeLng: itemData.item.lng
             });
           }}
         />
@@ -44,7 +42,7 @@ PlacesScreen.navigationOptions = (navData) => {
   const categoryTitle = navData.navigation.getParam('categoryTitle');
 
   return {
-    headerTitle: categoryTitle,
+    headerTitle: categoryTitle
   };
 };
 

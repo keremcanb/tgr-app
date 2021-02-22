@@ -9,15 +9,11 @@ enableScreens();
 const fetchFonts = () =>
   Font.loadAsync({
     'nunito-bold': require('./src/assets/fonts/Nunito-Bold.ttf'),
-    'nunito-light': require('./src/assets/fonts/Nunito-Light.ttf'),
+    'nunito-light': require('./src/assets/fonts/Nunito-Light.ttf')
   });
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
 
-  return fontLoaded ? (
-    <Navigator />
-  ) : (
-    <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} />
-  );
+  return fontLoaded ? <Navigator /> : <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} />;
 }

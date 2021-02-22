@@ -1,13 +1,6 @@
+/* eslint-disable no-dupe-keys */
 import React from 'react';
-import {
-  ScrollView,
-  Image,
-  Text,
-  StyleSheet,
-  View,
-  Platform,
-  Linking,
-} from 'react-native';
+import { ScrollView, Image, Text, StyleSheet, View, Platform, Linking } from 'react-native';
 import MapView from 'react-native-maps';
 import { MarkdownView } from 'react-native-markdown-view';
 
@@ -27,7 +20,7 @@ const PlaceDetails = ({ navigation }) => {
 
   const url = Platform.select({
     ios: `${scheme}${label}@${latLng}`,
-    android: `${scheme}${latLng}(${label})`,
+    android: `${scheme}${latLng}(${label})`
   });
 
   return (
@@ -60,7 +53,7 @@ const PlaceDetails = ({ navigation }) => {
                 latitude: placesLat,
                 longitude: placesLng,
                 latitudeDelta: 0.0022,
-                longitudeDelta: 0.0121,
+                longitudeDelta: 0.0121
               }}
             >
               <MapView.Marker
@@ -79,73 +72,73 @@ const PlaceDetails = ({ navigation }) => {
 PlaceDetails.navigationOptions = (navData) => {
   const place = navData.navigation.getParam('placeTitle');
   return {
-    headerTitle: place,
+    headerTitle: place
   };
 };
 
 const styles = StyleSheet.create({
   image: {
     width: '100%',
-    height: 200,
+    height: 200
   },
   container: {
     padding: 15,
     fontSize: 19,
     lineHeight: 25,
-    fontFamily: 'nunito-light',
+    fontFamily: 'nunito-light'
   },
   heading3: {
     fontSize: 20,
     fontFamily: 'nunito-bold',
     fontWeight: '700',
     paddingLeft: 15,
-    marginBottom: 10,
+    marginBottom: 10
   },
   line: {
     backgroundColor: '#ccc',
     height: 1,
     marginLeft: '4%',
     marginRight: '4%',
-    marginBottom: 10,
+    marginBottom: 10
   },
   map: {
     height: 300,
-    margin: 15,
-  },
+    margin: 15
+  }
 });
 
 const markdownStyles = {
   text: {
     fontSize: 19,
     lineHeight: 25,
-    fontFamily: 'nunito-light',
+    fontFamily: 'nunito-light'
   },
   heading2: {
     fontSize: 24,
     fontFamily: 'nunito-bold',
-    marginBottom: 10,
+    marginBottom: 10
   },
   heading3: {
     fontSize: 20,
     fontFamily: 'nunito-bold',
     marginBottom: 10,
     textTransform: 'lowercase',
-    textTransform: 'capitalize',
+    textTransform: 'capitalize'
   },
   heading4: {
     fontSize: 18,
     fontFamily: 'nunito-bold',
     marginBottom: 10,
     textTransform: 'lowercase',
-    textTransform: 'capitalize',
+    textTransform: 'capitalize'
   },
   imageWrapper: {
     padding: 4,
-    width: '100%',
+    width: '100%'
   },
   hr: {
-    marginBottom: 10,
-  },
+    marginBottom: 10
+  }
 };
 
 export default PlaceDetails;

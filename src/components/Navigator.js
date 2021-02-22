@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import { Platform } from 'react-native';
 import { createAppContainer } from 'react-navigation';
@@ -19,64 +20,64 @@ import AppInfo from '../screens/AppInfo';
 const defaultStackNavOptions = {
   headerStyle: {
     backgroundColor: Platform.OS === 'android' ? '#2a1a73' : '',
-    height: 50,
+    height: 50
   },
   headerTitleStyle: {
-    fontFamily: 'nunito-bold',
+    fontFamily: 'nunito-bold'
   },
   headerBackTitleStyle: {
-    fontFamily: 'nunito-light',
+    fontFamily: 'nunito-light'
   },
-  headerTintColor: Platform.OS === 'android' ? 'white' : '#2a1a73',
+  headerTintColor: Platform.OS === 'android' ? 'white' : '#2a1a73'
 };
 
 // Main navigator
 const Navigator = createStackNavigator(
   {
     Home: {
-      screen: Locations,
+      screen: Locations
     },
     Categories: {
-      screen: Categories,
+      screen: Categories
     },
     CategoryPlaces: {
-      screen: Places,
+      screen: Places
     },
     PlaceDetail: {
-      screen: PlaceDetails,
+      screen: PlaceDetails
     },
     Search: {
-      screen: Search,
+      screen: Search
     },
     SearchResult: {
-      screen: SearchResults,
+      screen: SearchResults
     },
     Info: {
-      screen: AppInfo,
-    },
+      screen: AppInfo
+    }
   },
   {
-    defaultNavigationOptions: defaultStackNavOptions,
+    defaultNavigationOptions: defaultStackNavOptions
   }
 );
 
 // Search navigator
 const SearchNavigator = createStackNavigator(
   {
-    Search,
+    Search
   },
   {
-    defaultNavigationOptions: defaultStackNavOptions,
+    defaultNavigationOptions: defaultStackNavOptions
   }
 );
 
 // Info navigator
 const InfoNavigator = createStackNavigator(
   {
-    Info: AppInfo,
+    Info: AppInfo
   },
   {
-    defaultNavigationOptions: defaultStackNavOptions,
+    defaultNavigationOptions: defaultStackNavOptions
   }
 );
 
@@ -85,34 +86,24 @@ const tabScreenConfig = {
   Places: {
     screen: Navigator,
     navigationOptions: {
-      tabBarIcon: (tabInfo) => (
-        <Ionicons name='ios-home' size={25} color={tabInfo.tintColor} />
-      ),
-      tabBarColor: '#2a1a73',
-    },
+      tabBarIcon: (tabInfo) => <Ionicons name="ios-home" size={25} color={tabInfo.tintColor} />,
+      tabBarColor: '#2a1a73'
+    }
   },
   Search: {
     screen: SearchNavigator,
     navigationOptions: {
-      tabBarIcon: (tabInfo) => (
-        <Ionicons name='ios-search' size={25} color={tabInfo.tintColor} />
-      ),
-      tabBarColor: '#2a1a73',
-    },
+      tabBarIcon: (tabInfo) => <Ionicons name="ios-search" size={25} color={tabInfo.tintColor} />,
+      tabBarColor: '#2a1a73'
+    }
   },
   Info: {
     screen: InfoNavigator,
     navigationOptions: {
-      tabBarIcon: (tabInfo) => (
-        <Ionicons
-          name='ios-information-circle-outline'
-          size={25}
-          color={tabInfo.tintColor}
-        />
-      ),
-      tabBarColor: '#2a1a73',
-    },
-  },
+      tabBarIcon: (tabInfo) => <Ionicons name="ios-information-circle-outline" size={25} color={tabInfo.tintColor} />,
+      tabBarColor: '#2a1a73'
+    }
+  }
 };
 
 // Tab navigator options
@@ -123,13 +114,13 @@ const PlacesFavTabNavigator =
         shifting: true,
         labeled: false,
         barStyle: {
-          backgroundColor: '#2a1a73',
-        },
+          backgroundColor: '#2a1a73'
+        }
       })
     : createBottomTabNavigator(tabScreenConfig, {
         tabBarOptions: {
-          activeTintColor: '#ff6f00',
-        },
+          activeTintColor: '#ff6f00'
+        }
       });
 
 export default createAppContainer(PlacesFavTabNavigator);
