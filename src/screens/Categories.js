@@ -5,9 +5,7 @@ import useResources from '../components/useResources';
 
 const Categories = ({ navigation }) => {
   const categories = useResources('categories');
-
   const selectedLocation = navigation.getParam('locationTitle');
-
   const selectedCategory = categories.filter((cat) => cat.location.some((loc) => loc.value === selectedLocation));
 
   return (

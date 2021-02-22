@@ -6,7 +6,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-
 import Locations from '../screens/Locations';
 import Categories from '../screens/Categories';
 import Places from '../screens/Places';

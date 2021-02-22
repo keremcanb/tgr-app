@@ -12,7 +12,7 @@ const fetchFonts = () =>
     'nunito-light': require('./src/assets/fonts/Nunito-Light.ttf')
   });
 
-export default function App() {
+const App = () => {
   const [fontLoaded, setFontLoaded] = useState(false);
 
   return fontLoaded ? (
@@ -20,4 +20,6 @@ export default function App() {
   ) : (
     <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} onError={console.warn} />
   );
-}
+};
+
+export default App;

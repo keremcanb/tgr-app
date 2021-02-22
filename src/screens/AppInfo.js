@@ -8,7 +8,6 @@ const AppInfo = () => (
         Bu uygulama, 2010 yılından beri Tayland hakkındaki en ayrıntılı Türkçe kaynak olma özelliğini koruyan
         taylandgezi.com sitesindeki bilgilerden derlenmiştir.
       </Text>
-
       <TouchableOpacity onPress={() => Linking.openURL('http://www.taylandgezi.com')}>
         <View
           style={{
@@ -19,12 +18,10 @@ const AppInfo = () => (
           <Image source={require('../assets/tgr-logo.gif')} />
         </View>
       </TouchableOpacity>
-
       <Text style={styles.container}>
         Daha fazla ve ayrıntılı bilgiler için Google Play Books&apos;tan Tayland Gezi Rehberi e-kitabını
         indirebilirsiniz.
       </Text>
-
       <TouchableOpacity
         onPress={() =>
           Linking.openURL(
@@ -41,9 +38,7 @@ const AppInfo = () => (
           <Image source={require('../assets/tgr-book.jpg')} />
         </View>
       </TouchableOpacity>
-
       <Text style={styles.container}>© 2020 Keremcan Büyüktaşkın</Text>
-
       <Text style={styles.container}>
         Yazar, bilgilerin güncelliği, doğruluğu & eksiksizliği hakkında hiçbir garanti vermemektedir. Bilgilerin
         kullanımından kaynaklanabilecek bir zarardan yazar sorumlu tutulamaz. Metinler & görseller üzerindeki tüm maddi
@@ -51,7 +46,6 @@ const AppInfo = () => (
         aittir. Söz konusu metinler & görseller eser sahibinin izni olmadan kopyalanamaz, çoğaltılamaz, işlenemez,
         değiştirilemez, başka internet sitelerinde ve basılı yada görsel yayın yapan diğer mecralarda yayınlanamaz.
       </Text>
-
       <Text style={styles.container}>
         Kullanım hakkı yazara ait olmayan açık kullanımlı fotoğraflar Wikimedia Commons kaynaklı & CC BY-SA lisanslı,
         haritalar ise OpenStreetMap kaynaklı & ODbL lisanslıdırlar.

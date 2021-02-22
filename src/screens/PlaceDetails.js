@@ -12,15 +12,10 @@ const PlaceDetails = ({ navigation }) => {
   const placesLink = navigation.getParam('placeLink');
   const placesLat = navigation.getParam('placeLat');
   const placesLng = navigation.getParam('placeLng');
-
   const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
-
   const latLng = `${placesLat},${placesLng}`;
-
   const label = 'Custom Label';
-
   const bookingUrl = `${placesLink}`;
-
   const url = Platform.select({
     ios: `${scheme}${label}@${latLng}`,
     android: `${scheme}${latLng}(${label})`

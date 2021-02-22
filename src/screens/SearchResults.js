@@ -11,13 +11,9 @@ const PlaceDetails = ({ navigation }) => {
   const placesInfo = navigation.getParam('placeInfo');
   const placesLat = navigation.getParam('placeLat');
   const placesLng = navigation.getParam('placeLng');
-
   const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
-
   const latLng = `${placesLat},${placesLng}`;
-
   const label = 'Custom Label';
-
   const url = Platform.select({
     ios: `${scheme}${label}@${latLng}`,
     android: `${scheme}${latLng}(${label})`
@@ -26,11 +22,9 @@ const PlaceDetails = ({ navigation }) => {
   return (
     <ScrollView>
       <Image source={{ uri: placesImage }} style={styles.image} />
-
       <View style={styles.container}>
         <MarkdownView styles={markdownStyles}>{placesContent}</MarkdownView>
       </View>
-
       <View>
         {placesInfo !== '' && (
           <>
@@ -40,7 +34,6 @@ const PlaceDetails = ({ navigation }) => {
           </>
         )}
       </View>
-
       <View>
         {placesLat && placesLat !== '' && (
           <>
