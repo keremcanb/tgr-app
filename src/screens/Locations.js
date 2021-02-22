@@ -37,7 +37,7 @@ const Locations = ({ navigation }) => {
 
 Locations.navigationOptions = () => ({
   headerTitle: 'Tayland Gezi Rehberi',
-  headerLeft: (
+  headerLeft: () => (
     <View style={{ flexDirection: 'row' }}>
       <Image source={require('../assets/icon-s.png')} style={styles.icon} />
     </View>
