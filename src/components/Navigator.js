@@ -20,7 +20,7 @@ import AppInfo from '../screens/AppInfo';
 const defaultStackNavOptions = {
   headerStyle: {
     backgroundColor: Platform.OS === 'android' ? '#2a1a73' : '',
-    height: 50
+    height: 75
   },
   headerTitleStyle: {
     fontFamily: 'nunito-bold'
