@@ -1,6 +1,6 @@
 {
-  "extends": ["airbnb"],
-  "plugins": ["react", "react-native", "react-hooks"],
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["react", "react-native", "react-hooks", "prettier"],
   "parser": "babel-eslint",
   "rules": {
     "no-use-before-define": 0,
@@ -14,6 +14,8 @@
     "global-require": 0,
     "react-hooks/exhaustive-deps": 0,
     "react/display-name": 0,
+    "max-len": 0,
+    "no-console": 0,
     "prettier/prettier": [
       "error",
       {
